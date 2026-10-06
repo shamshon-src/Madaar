@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>معاينة المؤثرات - مدار</title>
+<style>
+:root{color-scheme:light;--page:#f3f8fd;--paper:#fff;--ink:#0b2d5b;--muted:#53627a;--line:#dce6f0;--green:#22cc66;--gold:#f0a92a;--red:#e95b5b;--blue:#80b7df}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"Readex Pro",Tahoma,sans-serif}
+button{font:inherit}
+.shell{min-height:100vh;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:10;min-height:72px;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);background:#f3f8fdf2;backdrop-filter:blur(10px)}
+.brand{font-size:21px;font-weight:700}
+.top-actions{display:flex;align-items:center;gap:9px}
+.topic,.sound-toggle{min-height:40px;padding:0 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.sound-toggle{cursor:pointer;font-weight:700}
+.sound-toggle:hover{box-shadow:0 5px 14px #0b2d5b18}
+main{width:min(1420px,100%);margin:0 auto;padding:24px;flex:1}
+.layout{display:grid;grid-template-columns:minmax(245px,320px) minmax(380px,600px) minmax(245px,320px);align-items:stretch;justify-content:center;gap:20px}
+.panel{min-width:0;padding:20px;border:1px solid #edf2f7;border-radius:20px;background:var(--paper);box-shadow:0 8px 22px #10315712}
+.interaction{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:13px}
+.board-wrap{grid-column:2;grid-row:1;align-self:start;min-width:0}
+.players{grid-column:3;grid-row:1}
+.section-title{margin:0;font-size:16px}
+.badge{align-self:flex-start;padding:5px 11px;border-radius:99px;background:#f1f6fb;font-size:11px;font-weight:700}
+.reveal-summary{display:flex;align-items:center;justify-content:center;gap:12px;padding:7px 0}
+.reveal-tile{width:82px;height:88px;border-top:7px solid var(--gold);border-radius:16px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#b87900;box-shadow:0 5px 16px #10315712}
+.reveal-tile svg{width:30px;height:30px}
+.question-mark{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;background:#0b3b70;color:#86c3f0;font-size:27px;font-weight:700}
+.arrow{font-size:24px}
+.interaction h1{margin:0;text-align:center;font-size:21px}
+.description{margin:0;color:var(--muted);font-size:14px;line-height:1.8;text-align:center}
+.reward{align-self:center;padding:8px 13px;border-radius:12px;background:#fff3d8;color:#805000;font-size:12px;font-weight:700}
+.action-button{min-height:45px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:#f5f9fd;color:var(--ink);font-weight:700;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.action-button:hover{transform:scale(1.015);box-shadow:0 5px 14px #0b2d5b18}
+.action-button:active{transform:scale(.98)}
+.primary{margin-top:auto;border:0;background:var(--green)}
+.answer-samples{display:grid;gap:8px}
+.answer{min-height:39px;text-align:right;font-size:12px}
+.demo-controls{margin-top:3px;padding-top:12px;border-top:1px solid var(--line)}
+.demo-controls p{margin:0 0 8px;color:var(--muted);font-size:11px}
+.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.demo-grid .action-button{min-height:39px;padding:5px;font-size:11px}
+.status{min-height:17px;color:var(--muted);font-size:11px}
+.board-grid{width:100%;max-width:600px;aspect-ratio:1;display:grid;grid-template-columns:1.35fr repeat(5,minmax(0,1fr)) 1.35fr;grid-template-rows:1.35fr repeat(5,minmax(0,1fr)) 1.35fr;gap:3px;padding:3px;overflow:hidden;border-radius:16px;background:var(--line);box-shadow:0 8px 22px #10315712}
+.tile{position:relative;min-width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0b3b70;color:#86c3f0;text-align:center;font-size:clamp(8px,1vw,11px);font-weight:700}
+.tile.hidden{font-size:19px}
+.tile.revealed{background:#fff;color:var(--ink)}
+.tile-band{position:absolute;inset:0 0 auto;height:7px;background:var(--tile)}
+.tile.side .tile-band{inset:0 auto 0 0;width:7px;height:auto}
+.tile-label{padding:9px 3px 3px;line-height:1.25;overflow-wrap:anywhere}
+.pawn{position:absolute;z-index:1;top:3px;left:3px;width:23px;height:23px;display:grid;place-items:center;border:2px solid white;border-radius:50%;background:var(--pawn);color:#0b2d5b;font-size:10px;box-shadow:0 2px 6px #0003}
+.start{background:#0b3b70;color:white}
+.center{grid-row:2/7;grid-column:2/7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:#f3f8fd;text-align:center}
+.center strong{font-size:18px}
+.center span{max-width:180px;color:var(--muted);font-size:11px;line-height:1.6}
+.players{display:flex;flex-direction:column;gap:12px}
+.player{padding:12px;border:1px solid var(--line);border-radius:14px}
+.player.active{border:2px solid var(--green)}
+.player-row{display:flex;align-items:center;gap:9px}
+.player-pawn{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:var(--pawn);font-weight:700}
+.player-name{flex:1;font-size:13px;font-weight:700}
+.score{font-size:12px;font-weight:700}
+.progress{height:7px;margin-top:9px;overflow:hidden;border-radius:9px;background:var(--line)}
+.progress span{display:block;width:45%;height:100%;background:var(--pawn)}
+.turn{margin-top:8px;color:#127a3d;font-size:11px;font-weight:700}
+.history{margin-top:4px;padding-top:12px;border-top:1px solid var(--line)}
+.history h2{margin:0 0 8px;font-size:14px}
+.history p,.win-note{margin:5px 0;color:var(--muted);font-size:11px;line-height:1.6}
+.success-flash{animation:success .85s ease}
+.error-shake{animation:error .58s ease}
+.pulse{animation:pulse .9s ease-out}
+@keyframes success{0%,100%{box-shadow:0 0 0 0 #22cc6600}35%{box-shadow:0 0 0 6px #22cc6640;background:#edfff4;border-color:#22cc66}}
+@keyframes error{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(3px)}40%,80%{transform:translateX(-3px)}45%{box-shadow:0 0 0 5px #ef535026;background:#fff4f4;border-color:#ef5350}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #22cc6680}100%{box-shadow:0 0 0 12px #22cc6600}}
+@media(max-width:1050px){.layout{grid-template-columns:minmax(240px,1fr) minmax(380px,1.5fr)}.board-wrap{grid-column:1/-1;grid-row:1;justify-self:center;width:min(100%,600px)}.interaction{grid-column:1;grid-row:2}.players{grid-column:2;grid-row:2}}
+@media(max-width:620px){.topbar{padding:10px 13px}.topic{display:none}main{padding:16px}.layout{display:flex;flex-direction:column}.board-wrap{order:0}.interaction{order:1;min-height:380px}.players{order:2}.demo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.tile-label{font-size:8px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <span class="brand">مَدَار · معاينة المؤثرات</span>
+    <div class="top-actions">
+      <span class="topic">الموضوع: الصيام · جماعي</span>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">🔊 الصوت يعمل</button>
+    </div>
+  </header>
+  <main>
+    <div class="layout">
+      <section class="panel interaction" aria-label="معاينة التفاعلات">
+        <span class="badge">كشفت خلية · مساعدة</span>
+        <div class="reveal-summary">
+          <div class="reveal-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6m-5 3h4m-5-6a7 7 0 1 1 6 0c-.8.6-1 1.1-1 2h-4c0-.9-.2-1.4-1-2z"/></svg><strong>مصباح</strong></div>
+          <span class="arrow" aria-hidden="true">←</span><span class="question-mark">؟</span>
+        </div>
+        <h1>مصباح</h1>
+        <p class="description">حصلت على مصباح مجاني للتلميحات في هذه الجولة.</p>
+        <span class="reward">💡 +1 مصباح</span>
+        <div class="answer-samples" aria-label="عينات خيارات الإجابة">
+          <button class="action-button answer" data-feedback="success" type="button">إجابة صحيحة · جرّب التوهج الأخضر</button>
+          <button class="action-button answer" data-feedback="error" type="button">إجابة خاطئة · جرّب الاهتزاز الأحمر</button>
+        </div>
+        <button class="action-button primary" data-sound="open" type="button">اسحب بطاقة عشوائية</button>
+        <div class="demo-controls">
+          <p>اضغط لتجربة الأصوات والمؤثرات بصوت اصطناعي عبر Web Audio:</p>
+          <div class="demo-grid">
+            <button class="action-button" data-sound="click" type="button">نقرة ناعمة</button>
+            <button class="action-button" data-sound="open" type="button">فتح بطاقة</button>
+            <button class="action-button" data-sound="success" type="button">نجاح</button>
+            <button class="action-button" data-sound="error" type="button">إجابة خاطئة</button>
+            <button class="action-button" data-sound="time" type="button">انتهاء الوقت</button>
+            <button class="action-button" id="pulseButton" type="button">وميض الخلية</button>
+          </div>
+          <p class="status" id="status" aria-live="polite">الصوت مفعّل. اضغط أي زر للاستماع.</p>
+        </div>
+      </section>
+      <div class="board-wrap">
+        <div class="board-grid" id="board" aria-label="رقعة اللعبة"></div>
+      </div>
+      <section class="panel players">
+        <h2 class="section-title">اللاعبون</h2>
+        <article class="player active"><div class="player-row"><span class="player-pawn" style="--pawn:#22cc66">1</span><span class="player-name">سارة</span><span class="score">14 / 30</span></div><div class="progress"><span></span></div><div class="turn">دورك الآن · 1 دورة · 1 💡</div></article>
+        <article class="player"><div class="player-row"><span class="player-pawn" style="--pawn:#f0a92a">2</span><span class="player-name">عمر</span><span class="score">10 / 30</span></div><div class="progress"><span style="width:33%"></span></div><p class="win-note">1 دورة · 0 💡</p></article>
+        <article class="player"><div class="player-row"><span class="player-pawn" style="--pawn:#5b8def">3</span><span class="player-name">ليلى</span><span class="score">6 / 30</span></div><div class="progress"><span style="width:20%"></span></div><p class="win-note">0 دورة · 1 💡</p></article>
+        <div class="history"><h2>السجل</h2><p>3 · وقف على خلية عادية.</p><p>2 · قرأ ومضة من محطة المعرفة.</p><p>1 · كشف «مصباح».</p></div>
+        <p class="win-note">أول من يبلغ 30 نقطة يفوز.</p>
+      </section>
+    </div>
+  </main>
+</div>
+<script>
+(() => {
+  const grid = document.getElementById("board");
+  const path = [];
+  for (let column = 2; column <= 6; column++) path.push([7, column]);
+  for (let row = 6; row >= 2; row--) path.push([row, 7]);
+  for (let column = 6; column >= 2; column--) path.push([2, column]);
+  for (let row = 3; row <= 6; row++) path.push([row, 2]);
+  const revealed = new Map([
+    [1, ["الشهادتان", "#22cc66", "bottom"]],
+    [3, ["مصباح", "#f0a92a", "bottom"]],
+    [6, ["محطة المعرفة", "#80b7df", "side"]],
+    [9, ["تحدي المنافسين", "#e95b5b", "side"]],
+    [14, ["خلية الفريق", "#22cc66", "bottom"]],
+    [18, ["مضاعفة ×2", "#f0a92a", "side"]]
+  ]);
+  path.forEach(([row, column], index) => {
+    const tile = document.createElement("div");
+    tile.className = "tile";
+    tile.style.gridRow = row;
+    tile.style.gridColumn = column;
+    if (index === 0 || index === 3 || index === 6) {
+      const pawn = document.createElement("span");
+      pawn.className = "pawn";
+      pawn.style.setProperty("--pawn", ["#22cc66", "#f0a92a", "#5b8def"][index === 0 ? 0 : index === 3 ? 1 : 2]);
+      pawn.textContent = index === 0 ? "1" : index === 3 ? "2" : "3";
+      tile.append(pawn);
+    }
+    if (index === 11) {
+      tile.classList.add("start");
+      tile.textContent = "البداية";
+    } else if (revealed.has(index)) {
+      const [label, color, edge] = revealed.get(index);
+      tile.classList.add("revealed");
+      tile.style.setProperty("--tile", color);
+      if (edge === "side") tile.classList.add("side");
+      const band = document.createElement("span");
+      band.className = "tile-band";
+      const text = document.createElement("span");
+      text.className = "tile-label";
+      text.textContent = label;
+      tile.append(band, text);
+      if (index === 3) tile.dataset.pulseTile = "true";
+    } else {
+      tile.classList.add("hidden");
+      tile.textContent = "؟";
+    }
+    grid.append(tile);
+  });
+  const center = document.createElement("div");
+  center.className = "center";
+  center.style.gridRow = "2 / 7";
+  center.style.gridColumn = "2 / 7";
+  center.innerHTML = "<strong>مَدَار</strong><span>كل الخلايا الأخرى مخفية حتى يقف عليها اللاعب</span>";
+  grid.append(center);
+
+  const status = document.getElementById("status");
+  const soundToggle = document.getElementById("soundToggle");
+  const audioKey = "madaarSoundMuted";
+  let muted = localStorage.getItem(audioKey) === "true";
+  let context;
+  const patterns = {
+    click: [[540, 0.045, "sine"]],
+    open: [[440, 0.12, "sine"], [660, 0.14, "sine"], [880, 0.18, "sine"]],
+    success: [[523, 0.12, "sine"], [659, 0.12, "sine"], [784, 0.22, "sine"]],
+    error: [[220, 0.12, "triangle"], [185, 0.14, "triangle"]],
+    time: [[760, 0.08, "sine"], [560, 0.12, "sine"]]
+  };
+  function syncToggle() {
+    soundToggle.textContent = muted ? "🔇 الصوت مكتوم" : "🔊 الصوت يعمل";
+    soundToggle.setAttribute("aria-pressed", String(muted));
+  }
+  function play(kind) {
+    if (muted) return;
+    const Audio = window.AudioContext || window.webkitAudioContext;
+    if (!Audio) {
+      status.textContent = "الصوت غير مدعوم في هذا المتصفح.";
+      return;
+    }
+    context = context || new Audio();
+    if (context.state === "suspended") context.resume();
+    const start = context.currentTime;
+    patterns[kind].forEach(([frequency, duration, wave], index) => {
+      const when = start + index * 0.13;
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      oscillator.type = wave;
+      oscillator.frequency.setValueAtTime(frequency, when);
+      if (kind === "open" || kind === "success") oscillator.frequency.exponentialRampToValueAtTime(frequency * 1.06, when + duration);
+      gain.gain.setValueAtTime(0.0001, when);
+      gain.gain.exponentialRampToValueAtTime(0.045, when + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+      oscillator.connect(gain);
+      gain.connect(context.destination);
+      oscillator.start(when);
+      oscillator.stop(when + duration + 0.01);
+    });
+  }
+  syncToggle();
+  soundToggle.addEventListener("click", () => {
+    muted = !muted;
+    localStorage.setItem(audioKey, String(muted));
+    syncToggle();
+    status.textContent = muted ? "تم كتم الصوت، وحُفظ اختيارك." : "تم تفعيل الصوت.";
+    if (!muted) play("click");
+  });
+  document.querySelectorAll("[data-sound]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const kind = button.dataset.sound;
+      play(kind);
+      status.textContent = muted ? "الصوت مكتوم. فعّله من الزر العلوي للتجربة." : `معاينة صوت: ${button.textContent.trim()}`;
+      if (kind === "success" || kind === "error") {
+        const target = document.querySelector(".answer");
+        target.classList.remove("success-flash", "error-shake");
+        void target.offsetWidth;
+        target.classList.add(kind === "success" ? "success-flash" : "error-shake");
+      }
+      if (kind === "open") document.querySelector("[data-pulse-tile]")?.classList.add("pulse");
+    });
+  });
+  document.querySelectorAll("[data-feedback]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const kind = button.dataset.feedback;
+      play(kind);
+      button.classList.remove("success-flash", "error-shake");
+      void button.offsetWidth;
+      button.classList.add(kind === "success" ? "success-flash" : "error-shake");
+      status.textContent = kind === "success" ? "إجابة صحيحة · توهج أخضر ناعم." : "إجابة خاطئة · اهتزاز خفيف قبل المتابعة.";
+    });
+  });
+  document.getElementById("pulseButton").addEventListener("click", () => {
+    play("open");
+    const tile = document.querySelector("[data-pulse-tile]");
+    tile.classList.remove("pulse");
+    void tile.offsetWidth;
+    tile.classList.add("pulse");
+    status.textContent = "وميض لطيف على الخلية التي كُشفت.";
+  });
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("button") && !event.target.closest("[data-sound], [data-feedback], #pulseButton, #soundToggle")) play("click");
+  });
+})();
+</script>
+</body>
+</html>

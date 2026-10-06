@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head>
+<script src="ui-ready.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>مدار — تسجيل الدخول</title><link rel="stylesheet" href="entry-pages.css"><link rel="stylesheet" href="theme.css"><script src="theme.js"></script><link rel="stylesheet" href="font-size.css"><script src="font-size.js"></script><script src="localization.js"></script><script src="board-panel-layout.js"></script><link rel="stylesheet" href="board-panel-layout.css"><link rel="stylesheet" href="ui-fixes.css"></head>
+<body class="login-page">
+<header class="preview-header"><a class="preview-brand" href="Main.html"><img src="images/logo_1.png" alt="شعار مدار"><span>مَدَار</span></a><nav aria-label="التنقل"><a href="HowToPlay.html">كيف ألعب</a><a href="Main.html">رجوع</a></nav></header>
+<main class="preview-main"><h1 class="preview-title">أهلًا بك في مَدَار</h1><p class="preview-subtitle">خطوة بسيطة وتبدأ رحلتك.</p>
+<div class="preview-layout">
+<section class="preview-panel" aria-labelledby="login-title"><h2 id="login-title">ملف اللاعب</h2><p>احفظ اسمك على هذا الجهاز، أو ابدأ اللعب مباشرة.</p>
+<form class="preview-form" id="login-preview-form">
+<label for="account">اسم اللاعب<input class="preview-input" id="account" name="account" type="text" placeholder="أدخل اسمك" autocomplete="nickname" maxlength="60" required></label>
+<button class="preview-primary" type="submit">حفظ الاسم والبدء</button><p class="preview-status" id="login-status" role="status"></p>
+</form>
+<div class="preview-divider">أو</div><a class="preview-secondary preview-quick" href="Main.html">اللعب السريع</a><p class="preview-caption">ابدأ رحلتك دون تسجيل الدخول.</p><p class="preview-caption">ملفك محفوظ في هذا المتصفح فقط، دون بريد أو كلمة مرور.</p>
+</section>
+<aside class="preview-panel preview-falak"><div class="preview-bubble">أنا فَلَك، رفيقك في الرحلة!<br>هل أنت مستعد لنتعلم ونلعب معًا؟</div><img src="images/falak.png" alt="فَلَك، رفيقك في مدار"><div class="falak-gallery"><img src="images/falak_correct.png" alt="فلك يشجعك"><img src="images/falak_thinking.png" alt="فلك يفكر"></div><small>كل سؤال بداية لمعرفة جديدة.</small></aside>
+</div>
+</main>
+<script src="session-service.js"></script>
+<script src="login-controller.js"></script>
+<script src="navigation.js"></script><script src="account-view.js"></script></body></html>

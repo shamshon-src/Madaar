@@ -1,0 +1,19 @@
+body > div > header{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:16px!important;direction:inherit!important}
+body > div > header > a:first-child{position:static!important;transform:none!important;justify-self:start;white-space:nowrap}
+body > div > header > span{position:static!important;transform:none!important;text-align:center;min-width:0;overflow-wrap:anywhere}
+body > div > header nav{position:static!important;transform:none!important;display:flex!important;flex-wrap:wrap!important;justify-content:flex-end;min-width:0;gap:8px!important}
+body > div > header nav :is(a,button,select){min-height:42px!important;box-sizing:border-box;padding:8px 12px!important;border:1px solid var(--line)!important;border-radius:12px!important;background:var(--paper)!important;color:var(--ink)!important;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+body[data-screen="home"] main a[href="Setup.html"],body[data-screen="home"] main a[href="HowToPlay.html"]{min-height:50px!important;min-width:180px!important;padding:12px 24px!important;border-radius:14px!important;font-weight:600!important;text-align:center}
+body[data-screen="home"] main a[href="HowToPlay.html"]{background:var(--paper)!important;border:1px solid var(--line)!important;color:var(--ink)!important}
+body[data-screen="home"] .home-expert-link{background:var(--paper)!important;border:1px solid var(--line)!important;color:var(--ink)!important;min-height:50px!important;min-width:180px!important;padding:12px 24px!important;border-radius:14px!important;font-weight:600!important;text-align:center}
+.home-expert-section{padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;gap:14px}
+.home-expert-section h2,.home-expert-section p{margin:0}.home-expert-section p{line-height:1.8;max-width:800px}.home-expert-section .home-expert-link{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+html[data-theme="light"] body[data-screen="home"] main>div:first-child>div:first-child>p{color:#294b70!important;opacity:1!important}
+html[data-theme="dark"] body[data-screen="home"] main>div:first-child>div:first-child>p{color:#e0e9f5!important;opacity:1!important}
+.game-session-actions{position:fixed!important;inset:auto 0 0!important;z-index:120;display:flex!important;flex-direction:row!important;align-items:center!important;flex-wrap:wrap;justify-content:center;gap:12px;padding:10px!important;min-height:0!important;height:auto!important;background:var(--page);pointer-events:auto}
+body:has(.game-session-actions){padding-bottom:72px}
+.game-display-toolbar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;padding:10px;background:var(--page);position:relative;z-index:130}
+.game-display-toolbar :is(.theme-floating,.font-size-floating){position:static!important}
+.game-session-actions button{min-height:42px;padding:10px 18px;border:1px solid #d8a0a5;border-radius:12px;background:var(--paper);color:#9e2933;font:inherit;cursor:pointer}
+@media(max-width:900px){body > div > header{grid-template-columns:auto 1fr!important}body > div > header nav{grid-column:1/-1;justify-content:center!important;width:100%!important}body > div > header > span{text-align:end}}
+@media(max-width:480px){body[data-screen="board"] .board-tile-label{font-size:8px!important;line-height:1.15!important;overflow-wrap:anywhere;hyphens:auto}body[data-screen="board"] .board-tile-icon{width:15px!important;height:15px!important}.board-tile-content{gap:2px!important}}

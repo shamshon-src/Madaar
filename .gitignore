@@ -1,49 +1,45 @@
-# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# compiled output
-dist
-tmp
-out-tsc
+# Also protect this folder when uploaded as a separate repository.
+node_modules/
+.venv/
+venv/
+.next/
+dist/
+build/
 *.tsbuildinfo
-.expo
-.expo-shared
-
-# dependencies
-node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.template
+.secrets/
+*service-account*.json
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+playwright-report/
+test-results/
+*.log
+*.pid
+.firebase/
+.idea/
 .DS_Store
 Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*.tmp
+*.bak
 
-.cursor/rules/nx-rules.mdc
-.github/instructions/nx.instructions.md
+# Generated portable packages (regenerate when sharing).
+/share/
+/Madaar-share.zip
 
-# Replit
-.cache/
-.local/
+# Supplied AI dependency tree and copied online dependencies are covered by
+# node_modules/ above. Keep source, lockfiles and visual references tracked.

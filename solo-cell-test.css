@@ -1,0 +1,5 @@
+.solo-cell-test-tools{padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink);display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.solo-cell-test-tools h1{font-size:18px!important;margin:0}.solo-cell-test-tools p{flex-basis:100%;margin:0;line-height:1.6;font-size:13px}
+.solo-cell-test-tools :is(select,button,a){min-height:40px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;text-decoration:none}
+body[data-screen="board"]>div>main>.solo-cell-test-tools+div{display:grid!important;grid-template-columns:minmax(170px,.8fr) minmax(300px,1.7fr) minmax(270px,1.2fr)!important;gap:14px!important;align-items:start!important}
+@media(max-width:899px){body[data-screen="board"]>div>main>.solo-cell-test-tools+div{display:flex!important;flex-direction:column!important}}

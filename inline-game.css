@@ -1,0 +1,114 @@
+body[data-screen="board"] .inline-game-panel{padding:0!important;overflow:visible;min-width:0}
+.inline-game-panel>section{width:100%!important;max-width:none!important;min-width:0!important;flex:initial!important;border-radius:20px!important;box-shadow:none!important}
+.inline-game-panel.feedback-clean{padding:20px!important;display:flex;flex-direction:column;gap:16px}
+.inline-game-panel .feedback-summary>.falak-bot,.inline-game-panel .feedback-summary>img{position:static!important;inset:auto!important;width:112px!important;height:126px!important;transform:none!important}
+.inline-game-panel .ai-answer-options{display:flex;flex-direction:column;gap:10px}
+.inline-game-panel .ai-answer,.inline-game-panel .ai-submit{min-height:44px;white-space:normal;overflow-wrap:anywhere}
+.inline-game-panel .ai-answer{text-align:start}
+.inline-game-panel .ai-card-actions{display:flex;flex-wrap:wrap;gap:10px}
+.inline-game-panel>section{border:2px solid var(--player-color,var(--line))!important}
+.online-review-actions{display:flex;flex-wrap:wrap;gap:10px}.online-review-falak{width:64px;height:72px;object-fit:contain;align-self:center}
+.online-question{display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:16px;background:var(--paper)}.online-question textarea{min-height:100px;max-width:100%;box-sizing:border-box;padding:12px;font:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:12px}.online-question>small{font-size:10px;color:var(--muted)}.online-error{padding:10px;border:1px solid #c33248;border-radius:12px;background:var(--paper);font-size:12px}.room-members p{overflow-wrap:anywhere}
+.card-player-turn{flex-basis:100%;order:-1;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:10px;background:var(--paper,#fff);color:var(--ink,#082b5c);font-size:14px;font-weight:600;border-inline-start:6px solid var(--player-color)}
+.card-player-turn::before{content:'';width:12px;height:12px;flex-shrink:0;border-radius:50%;background:var(--player-color)}
+body[data-screen="board"] main .inline-game-panel .game-question-text{margin:0;font-size:calc(15px * var(--font-scale,1))!important;line-height:1.7;overflow-wrap:anywhere;font-weight:600}
+.inline-game-panel>section>div{padding:14px!important}
+.players-expert-link{display:flex;align-items:center;justify-content:center;min-height:40px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;color:var(--ink);text-decoration:none;background:var(--paper)}
+.simplify-purpose{font-size:12px;line-height:1.5;margin:0;flex-basis:100%;color:var(--muted)}
+.pending-draw{margin:10px 14px;opacity:.55;cursor:default}
+.turn-review .feedback-summary{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:28px 12px}
+.turn-review .review-caption{--base-font:12px!important;font-size:12px!important;color:var(--muted)}
+.turn-review .ai-card-actions{justify-content:center;padding:0 12px 18px}
+.turn-draw-ready{display:flex;flex-direction:column;align-items:center;gap:20px;padding:18px 12px;text-align:center}
+.turn-draw-ready .next-player-turn{align-self:stretch;text-align:start}
+.turn-draw-ready>.falak-bot{width:72px!important;height:78px!important;position:static!important;transform:none!important}
+.turn-draw-ready h2{--base-font:18px!important;font-size:18px!important;margin:0}
+.turn-draw-ready .draw-card{width:100%;max-width:260px}
+.answer-simplification{padding:16px!important;border:0!important;border-radius:14px;background:var(--paper)}
+.answer-simplification h2{--base-font:17px!important;font-size:17px!important}
+.answer-simplification p{--base-font:13px!important;font-size:13px!important;line-height:1.8;white-space:pre-line}
+.answer-evidence{margin:12px 0;padding:12px;border-inline-start:3px solid var(--accent,#0a3f70);background:var(--paper,#fff);line-height:1.9;white-space:pre-line;overflow-wrap:anywhere}
+.expanded-evidence>section{margin-block:16px;padding-block:12px;border-top:1px solid var(--line,#dce4ec)}
+.correct-answer-text{font-weight:600}
+.answer-simplification .simplify-source{--base-font:10px!important;font-size:10px!important;color:var(--muted)}
+body[data-screen="board"] .inline-game-panel>.cell-card{--cell-accent:#1b77a7;--cell-soft:#e3f3fc;border:1px solid var(--cell-accent)!important;border-radius:22px!important;background:var(--paper)!important;overflow:hidden!important}
+body[data-screen="board"] .cell-card[data-tone="gold"]{--cell-accent:#ad6b00;--cell-soft:#fdf1dc}
+body[data-screen="board"] .cell-card[data-tone="red"]{--cell-accent:#c33248;--cell-soft:#fce6e8}
+body[data-screen="board"] .cell-card[data-tone="green"]{--cell-accent:#17834c;--cell-soft:#e3f5e9}
+body[data-screen="board"] .inline-game-panel>.cell-card>.cell-card-hero{position:relative;padding:18px 14px!important;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;background:linear-gradient(135deg,var(--cell-soft),color-mix(in srgb,var(--cell-soft) 65%,var(--paper)))!important;color:var(--cell-accent)!important;border-bottom:3px solid var(--cell-accent)}
+.cell-card-badge{--base-font:10px!important;font-size:10px!important;letter-spacing:.1px;padding:5px 10px;border-radius:20px;border:1px solid color-mix(in srgb,var(--cell-accent) 25%,transparent);background:var(--paper);color:var(--cell-accent)!important}
+.cell-card-art{--base-font:36px!important;font-size:36px!important;font-weight:700;display:flex;align-items:center;justify-content:center;width:92px;height:92px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 7px color-mix(in srgb,var(--cell-accent) 10%,transparent),0 8px 18px color-mix(in srgb,var(--cell-accent) 15%,transparent);position:relative}
+.cell-card-art svg{width:50px;height:50px}
+.cell-card-multiplier .cell-card-art{border-radius:24px;transform:rotate(-5deg)}
+.cell-card-speed .cell-card-art{border:3px dashed var(--cell-accent)}
+.cell-card-streak .cell-card-art{--base-font:26px!important;font-size:26px!important;border-radius:22px}
+.cell-card-hero h2{--base-font:20px!important;font-size:20px!important;margin:3px 0 0;font-weight:700;line-height:1.3}
+body[data-screen="board"] .inline-game-panel>.cell-card>.cell-card-body{padding:16px!important;display:flex;flex-direction:column;gap:14px}
+.cell-card-description,.cell-knowledge-flash{--base-font:13px!important;font-size:13px!important;line-height:1.75;margin:0;text-align:start;color:var(--ink)}
+.cell-card-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.cell-card-chips span,.cell-card-participants span{--base-font:10px!important;font-size:10px!important;padding:5px 9px;border-radius:9px;background:var(--cell-soft);color:var(--cell-accent)}
+.cell-card-actions{display:flex;flex-direction:column;gap:8px}
+.cell-card-actions a,.cell-card-actions button{--base-font:13px!important;font-size:13px!important;display:flex;align-items:center;justify-content:center;background:var(--cell-accent)!important;color:#fff!important;border:0;border-radius:12px;min-height:42px;text-decoration:none;padding:8px 10px}
+.cell-card-actions a[href*="challenge=normal"]{background:var(--paper)!important;color:var(--cell-accent)!important;border:1px solid var(--cell-accent)}
+.cell-card-balance{margin:0;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--cell-accent)}
+.cell-card-balance strong{--base-font:24px!important;font-size:24px!important}
+.cell-card-balance span,.cell-card-source{--base-font:11px!important;font-size:11px!important}
+.cell-card-source{margin:0;color:var(--muted);line-height:1.6}
+.cell-knowledge-flash{padding:12px;border-inline-start:3px solid var(--cell-accent);background:var(--cell-soft);color:#0b2545;border-radius:10px}
+.cell-streak-progress,.cell-card-participants{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.cell-streak-progress span{--base-font:14px!important;font-size:14px!important;width:30px;height:30px;display:grid;place-items:center;border:2px solid var(--cell-accent);border-radius:50%;color:var(--cell-accent)}
+.cell-streak-progress strong{--base-font:20px!important;font-size:20px!important;color:var(--cell-accent)}
+/* Explicit bases also keep freshly rendered content from inheriting enlarged parent text. */
+body[data-screen="board"] .board-tile-label{--base-font:9px!important;font-size:9px!important;line-height:1.25;font-weight:600;word-break:normal;overflow-wrap:normal}
+body[data-screen="board"] .board-tile-content{padding:8px 3px 6px;gap:3px}
+body[data-screen="board"] .board-tile-icon{width:16px;height:16px;flex-basis:16px}
+body[data-screen="board"] .inline-game-panel .game-question-text{--base-font:14px!important;font-size:14px!important}
+body[data-screen="board"] .inline-game-panel>section>div:first-child span,body[data-screen="board"] .card-timer{--base-font:12px!important;font-size:12px!important}
+body[data-screen="board"] .board-grid>div[style*="grid-row: 2 / 7"]>span{--base-font:12px!important;font-size:12px!important;line-height:1.4}
+body[data-screen="board"] .board-grid>div[style*="grid-row: 2 / 7"]>.falak-bot{width:64px!important;height:72px!important}
+body[data-screen="board"] .board-grid a>span:first-child{width:62px!important;height:82px!important}
+body[data-screen="board"] .board-grid a>span:first-child img{width:58px!important;height:76px!important}
+body[data-screen="board"] .board-grid a>span:last-child{--base-font:12px!important;font-size:12px!important}
+body[data-screen="board"] .board-intro h2,body[data-screen="board"] .feedback-summary h1{--base-font:18px!important;font-size:18px!important;line-height:1.4}
+body[data-screen="board"] .board-intro p,body[data-screen="board"] .feedback-explanation p,body[data-screen="board"] .landing-event p{--base-font:12px!important;font-size:12px!important;line-height:1.65}
+body[data-screen="board"] .board-intro a,body[data-screen="board"] .inline-game-panel .ai-submit,body[data-screen="board"] .inline-game-panel .ai-answer,body[data-screen="board"] .simplify-button{--base-font:13px!important;font-size:13px!important;padding:8px 12px!important;min-height:40px}
+body[data-screen="board"] .board-status-badge,body[data-screen="board"] .simplify-purpose{--base-font:10px!important;font-size:10px!important}
+body[data-screen="board"] .next-player-turn,body[data-screen="board"] .card-player-turn{--base-font:12px!important;font-size:12px!important;padding:6px 9px}
+body[data-screen="board"] .feedback-explanation h2,body[data-screen="board"] .landing-event h2{--base-font:15px!important;font-size:15px!important}
+body[data-screen="board"] .board-intro{gap:9px}
+body[data-screen="board"] .board-reveal-summary>.falak-bot,body[data-screen="board"] .board-intro>.falak-bot{width:64px!important;height:68px!important}
+body[data-screen="board"] .feedback-summary>.falak-bot{width:64px!important;height:72px!important}
+body[data-screen="board"] .board-tile-band-corner{top:0!important;bottom:0!important;height:100%!important;width:6px!important;left:auto!important;right:auto!important;border-radius:0!important}
+body[data-screen="board"] [data-corner-edge="left"] .board-tile-band-corner{left:0!important}
+body[data-screen="board"] [data-corner-edge="right"] .board-tile-band-corner{right:0!important}
+.simplify-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#16824b;color:#fff!important;border-radius:12px;padding:9px 14px;text-decoration:none;min-height:44px;box-sizing:border-box;font-weight:600}
+.simplify-button img,.simplify-button .falak-bot{position:static!important;width:25px!important;height:29px!important;object-fit:contain;transform:none!important;flex:none}
+.player-effects{display:flex;flex-wrap:wrap;gap:4px}
+.player-effects span{padding:3px 6px;border-radius:7px;background:var(--paper);border:1px solid var(--line);font-size:11px}
+.landing-event{padding:12px;border:1px solid var(--tile-accent);border-inline-start-width:5px;border-radius:14px;background:var(--paper)}
+.landing-event h2{font-size:17px;margin:0 0 7px}
+.landing-event p{font-size:14px;line-height:1.7;margin:5px 0}
+.next-player-turn{border-inline-start:5px solid var(--player-color,#8b5cf6);padding:8px 12px;background:var(--paper);border-radius:8px;font-size:14px}
+body[data-screen="board"][data-card-type="analyze"] .inline-game-panel>section>div:first-child{background:#c83c4a!important;color:#fff!important}
+body[data-screen="board"][data-card-type="analyze"] .inline-game-panel>section>div:first-child>span{color:#fff!important}
+body[data-screen="board"] .board-cell-pawns{position:absolute;bottom:3px;left:2px;right:2px;display:flex;justify-content:center;gap:1px;flex-wrap:wrap;z-index:4}
+body[data-screen="board"] .board-cell-pawns .board-pawn{position:static!important;inset:auto!important;transform:none!important;margin:0!important;width:16px!important;height:16px!important;min-width:16px!important;font-size:9px!important;flex:none}
+@media(max-width:600px){body[data-screen="board"] .board-cell-pawns .board-pawn{width:12px!important;height:12px!important;min-width:12px!important;font-size:8px!important}}
+body[data-screen="board"]>div>main>div:first-child>section.inline-game-panel{display:block!important;max-height:calc(100dvh - 145px)!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain;touch-action:pan-y;scrollbar-gutter:stable}
+body[data-screen="board"] .inline-game-panel>section{flex:none!important;height:auto!important;max-height:none!important;overflow:visible!important}
+@media(min-width:900px){
+ body[data-screen="board"]>div{min-height:100dvh!important}
+ body[data-screen="board"]>div>main{padding:12px 20px!important;max-width:1420px!important}
+ body[data-screen="board"]>div>main>div:first-child{display:grid!important;grid-template-columns:minmax(170px,.8fr) minmax(300px,1.5fr) minmax(310px,1.5fr)!important;gap:14px!important;align-items:start!important}
+ body[data-screen="board"]>div>main>div:first-child>div:nth-child(2){width:100%!important;min-width:0!important;padding:0!important}
+ body[data-screen="board"] .board-grid{width:min(100%,calc(100dvh - 140px))!important;margin:auto}
+ body[data-screen="board"]>div>main>div:first-child>section{min-width:0!important;padding:12px!important;gap:10px!important;max-height:calc(100dvh - 130px);overflow-y:auto;overscroll-behavior:contain}
+ body[data-screen="board"] .inline-game-panel>section>div{padding:10px!important}
+ body[data-screen="board"] .inline-game-panel .ai-answer{min-height:40px;padding:8px 10px!important}
+ body[data-screen="board"] .feedback-summary>.falak-bot{width:72px!important;height:82px!important}
+ body[data-screen="board"] .feedback-clean{gap:10px!important}
+}
+@media(max-width:620px){
+ body[data-screen="board"]>div>header{position:static!important}
+ body[data-screen="board"]>div>main>div:first-child>section.inline-game-panel{max-height:none!important;overflow:visible!important}
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1007 940">
+  <defs>
+    <style>
+      #body-group, #head-group, #arm-left, #arm-right, #eye-left, #eye-right, #antenna-light, #chest-screen {
+        transform-box: view-box;
+      }
+      #body-group { transform-origin: 503px 680px; animation: var(--falak-body-animation, none); }
+      #head-group { transform-origin: 505px 320px; animation: var(--falak-head-animation, none); }
+      #arm-left { transform-origin: 290px 650px; animation: var(--falak-left-arm-animation, none); }
+      #arm-right { transform-origin: 720px 650px; animation: var(--falak-right-arm-animation, none); }
+      #eye-left, #eye-right { transform-origin: center; animation: var(--falak-eye-animation, none); }
+      #eye-left ellipse, #eye-right ellipse { opacity: var(--falak-open-eye-opacity, 1); animation: var(--falak-blink-animation, none); }
+      #eye-left .eye-blink-line, #eye-right .eye-blink-line { opacity: var(--falak-closed-eye-opacity, 0); animation: var(--falak-blink-line-animation, none); }
+      #antenna-light { animation: var(--falak-antenna-animation, none); }
+      #chest-logo { opacity: var(--falak-logo-opacity, 1); }
+      #chest-screen { animation: var(--falak-screen-animation, none); }
+      #chest-thinking, #chest-explaining, #chest-success, #chest-error { opacity: 0; }
+      #chest-thinking { opacity: var(--falak-thinking-opacity, 0); transform-box: view-box; transform-origin: 506px 622px; animation: var(--falak-thinking-animation, none); }
+      #chest-explaining { opacity: var(--falak-explaining-opacity, 0); animation: var(--falak-explaining-animation, none); }
+      #chest-success { opacity: var(--falak-success-opacity, 0); animation: var(--falak-success-animation, none); }
+      #chest-error { opacity: var(--falak-error-opacity, 0); animation: var(--falak-error-animation, none); }
+      .cls-1 {
+        fill: #195c8e;
+      }
+
+      .cls-2 {
+        fill: #eea727;
+      }
+
+      .cls-3 {
+        fill: #103e5b;
+      }
+
+      .cls-4 {
+        fill: #1f1b44;
+      }
+
+      .cls-5 {
+        fill: #165175;
+      }
+
+      .cls-6 {
+        fill: #b7232b;
+      }
+      @keyframes falak-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+      @keyframes falak-head-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+      @keyframes falak-blink { 0%, 46%, 50%, 100% { opacity: 1; } 48% { opacity: 0; } }
+      @keyframes falak-blink-line { 0%, 46%, 50%, 100% { opacity: 0; } 48% { opacity: 1; } }
+      @keyframes falak-thinking-head { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(6deg); } }
+      @keyframes falak-thinking-light { from { opacity: .3; filter: drop-shadow(0 0 1px #c92835); } to { opacity: 1; filter: drop-shadow(0 0 8px #ff3645); } }
+      @keyframes falak-gear-turn { to { transform: rotate(360deg); } }
+      @keyframes falak-reading { 0%, 100% { transform: translateX(-3px); } 50% { transform: translateX(3px); } }
+      @keyframes falak-explain-arm { 0%, 12% { transform: rotate(0); } 38%, 56% { transform: rotate(-28deg); } 82%, 100% { transform: rotate(0); } }
+      @keyframes falak-explain-head { 0%, 25% { transform: rotate(0); } 55% { transform: rotate(6deg); } 82%, 100% { transform: rotate(0); } }
+      @keyframes falak-explain-glow { from { filter: drop-shadow(0 0 1px #f0a92a); } to { filter: drop-shadow(0 0 10px #f0a92a); } }
+      @keyframes falak-screen-glow { from { filter: drop-shadow(0 0 0 #22cc6600); } to { filter: drop-shadow(0 0 12px #22cc6688); } }
+      @keyframes falak-celebrate-left { from { transform: rotate(0); } to { transform: rotate(-9deg); } }
+      @keyframes falak-celebrate-right { from { transform: rotate(0); } to { transform: rotate(9deg); } }
+      @keyframes falak-success-light { from { filter: drop-shadow(0 0 1px #22cc66); } to { filter: drop-shadow(0 0 8px #22cc66); } }
+      @keyframes falak-error-shake { 0%, 100% { transform: translateX(0); } 25%, 75% { transform: translateX(5px); } 50% { transform: translateX(-5px); } }
+      @keyframes falak-error-lower { to { transform: translateY(8px); } }
+      @keyframes falak-error-arms { to { transform: rotate(-5deg); } }
+      @media (prefers-reduced-motion: reduce) { #body-group, #head-group, #arm-left, #arm-right, #eye-left, #eye-right, #antenna-light, #chest-thinking, #chest-explaining, #chest-success, #chest-error { animation-duration: .01ms !important; } }
+    </style>
+  </defs>
+  <g id="falak">
+  <g id="arm-left">
+    <path class="cls-3" d="M226.35,771.75c-.3,0-.6,0-.91-.01-15.46-.49-27.59-13.42-27.1-28.88.09-2.79,2.8-69.18,56.94-132.69,49.79-58.4,134.66-92.17,138.71-94.17l36.67,34.67-59.59,30.08c-.3.16-30.95,16.22-73.17,65.75-40.89,47.97-43.57,97.65-43.59,98.14-.48,15.15-12.92,27.11-27.97,27.11Z"/>
+  <ellipse class="cls-1" cx="226.33" cy="766.09" rx="31.65" ry="58.64"/>
+  <ellipse class="cls-1" cx="255.83" cy="753.32" rx="13.96" ry="27.64" transform="translate(-342.39 228.84) rotate(-30)"/>
+  </g>
+  <g id="arm-right">
+    <g id="arm-right-2" data-name="arm-right">
+      <path class="cls-3" d="M752.69,737.82c-.02-.5-2.72-50.38-43.59-98.33-42.22-49.53-72.87-65.59-73.17-65.75l-49.26,6.92,18.67-60c4.06,1.99,96.6,24.1,146.38,82.5,54.14,63.52,56.85,129.9,56.94,132.69l-55.97,1.78v.18Z"/>
+    </g>
+    <ellipse class="cls-1" cx="780.67" cy="759.09" rx="31.65" ry="58.64"/>
+    <ellipse class="cls-1" cx="751.17" cy="746.32" rx="27.64" ry="13.96" transform="translate(-270.75 1023.7) rotate(-60)"/>
+  </g>
+  <g id="body-group">
+    <g id="body-base">
+      <path class="cls-1" d="M381.92,498.23h248c29.87,0,54.12,24.25,54.12,54.12v113.17c0,94.49-76.72,171.21-171.21,171.21h-13.84c-94.49,0-171.21-76.72-171.21-171.21v-113.17c0-29.87,24.25-54.12,54.12-54.12Z"/>
+    </g>
+    <g id="chest-screen">
+      <rect class="cls-4" x="412.52" y="540.78" width="186.82" height="161.91" rx="42.2" ry="42.2"/>
+      <image id="chest-logo" href="logo_1.png" x="446" y="562" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>
+      <g id="chest-thinking" fill="none" stroke="#f0a92a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M506 585l8 3 8-4 7 7-4 8 3 8 8 4v10l-8 4-3 8 4 8-7 7-8-4-8 3-4 8h-10l-4-8-8-3-8 4-7-7 4-8-3-8-8-4v-10l8-4 3-8-4-8 7-7 8 4 8-3 4-8z"/>
+        <circle cx="506" cy="616" r="13"/>
+      </g>
+      <g id="chest-explaining" fill="none" stroke="#f0a92a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M490 617a16 16 0 1 1 32 0c0 8-7 11-8 19h-16c-1-8-8-11-8-19z"/>
+        <path d="M498 644h16m-13 8h10m-5-62v-8m-27 18-6-5m59 5 6-5"/>
+      </g>
+      <g id="chest-success" fill="none" stroke="#22cc66" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="506" cy="621" r="43" opacity=".35"/>
+        <path d="M484 621l15 16 31-34"/>
+      </g>
+      <g id="chest-error" fill="#ef5350">
+        <path d="M506 581c5 0 9 4 9 9l-4 48h-10l-4-48c0-5 4-9 9-9z"/>
+        <circle cx="506" cy="651" r="7"/>
+      </g>
+    </g>
+    <g id="Shadow">
+      <path class="cls-5" d="M684.52,552.9v113.16c0,94.56-76.66,171.21-171.21,171.21h-13.84c-1.53,0-3.06-.02-4.58-.07,92.43-2.42,166.63-78.11,166.63-171.14v-113.16c0-29.9-24.24-54.13-54.13-54.13h23c29.89,0,54.13,24.23,54.13,54.13Z"/>
+    </g>
+  </g>
+  <g id="head-group">
+    <g id="antenna">
+      <rect class="cls-3" x="498.14" y="134.73" width="15" height="46.5"/>
+      <path class="cls-5" d="M491.58,168.23h28.69c14.22,0,25.77,11.55,25.77,25.77v18.23h-80.22v-18.23c0-14.22,11.55-25.77,25.77-25.77Z"/>
+    </g>
+    <g id="head-base">
+      <rect class="cls-1" x="316.3" y="191.06" width="379.25" height="272" rx="96.07" ry="96.07"/>
+    </g>
+    <g id="screen-face">
+      <rect class="cls-4" x="358.13" y="221.06" width="295.59" height="181" rx="74.8" ry="74.8"/>
+    </g>
+    <g id="Shadow-2" data-name="Shadow">
+      <path class="cls-5" d="M694.9,286.59v79.86c0,53.06-43.02,96.07-96.07,96.07h-25.22c53.06,0,96.07-43.01,96.07-96.07v-79.86c0-53.06-43.01-96.07-96.07-96.07h25.22c53.05,0,96.07,43.01,96.07,96.07Z"/>
+    </g>
+    <g id="eye-left">
+      <ellipse class="cls-2" cx="430.39" cy="306.73" rx="16.5" ry="34"/>
+      <path class="eye-blink-line" d="M414 312Q430 280 447 312" fill="none" stroke="#eea727" stroke-width="12" stroke-linecap="round"/>
+    </g>
+    <g id="eye-right">
+      <ellipse class="cls-2" cx="579.39" cy="306.73" rx="16.5" ry="34"/>
+      <path class="eye-blink-line" d="M563 312Q579 280 596 312" fill="none" stroke="#eea727" stroke-width="12" stroke-linecap="round"/>
+    </g>
+    <g id="antenna-light">
+      <circle class="cls-6" cx="505.93" cy="121.73" r="19"/>
+    </g>
+  </g>
+  </g>
+</svg>

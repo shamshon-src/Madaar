@@ -1,0 +1,5 @@
+.font-size-control{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:12px;white-space:nowrap;padding:4px 8px;border:1px solid var(--line,#cad8e8);border-radius:12px;background:var(--paper,#fff);color:var(--ink,#082b5c)}.font-size-control select{font:inherit;min-height:34px;max-width:84px;border:0;border-radius:6px;background:transparent;color:inherit}.font-size-floating{position:fixed;top:14px;left:100px;z-index:160}
+html:root:root:root:root:root:root:root:root:root:root:root[data-font-size="large"] [data-font-base],html:root:root:root:root:root:root:root:root:root:root:root[data-font-size="larger"] [data-font-base]{font-size:calc(var(--base-font)*var(--font-scale))!important}
+header nav{flex-wrap:wrap!important}.ai-card-actions{flex-shrink:0}
+html:root:root:root:root:root:root:root:root:root:root:root:is([data-font-size="small"],[data-font-size="smaller"]) [data-font-base]{font-size:calc(var(--base-font)*var(--font-scale))!important}
+#topic{min-width:0!important;width:100%;flex:1 1 0!important}main h1,main h2,main p{overflow-wrap:anywhere}

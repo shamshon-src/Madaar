@@ -1,0 +1,31 @@
+ابدئي من هنا — مَدار النسخة النهائية
+
+1) فكّي ضغط Madar_Final_Ministry_Ready.zip كاملًا.
+2) افتحي مجلد Madar_Final_Ministry_Ready.
+
+تشغيل الـBackend على Windows:
+- افتحي CMD داخل backend
+- اكتبي الأوامر واحدًا واحدًا:
+  py -3.12 -m venv .venv
+  .venv\Scripts\activate
+  python -m pip install -r requirements.txt
+  copy .env.example .env
+  python -m uvicorn app.main:app --reload
+
+بعدها افتحي:
+http://127.0.0.1:8000/docs
+
+تشغيل الـFrontend:
+- افتحي CMD جديد داخل frontend
+- اكتبي:
+  npm install --fetch-timeout=120000 --fetch-retries=5
+  copy .env.local.example .env.local
+  npm run dev
+
+بعدها افتحي:
+http://localhost:3000
+
+مهم:
+- لا تحتاجين OpenAI API لنسخة العرض المحلية.
+- لا ترفعين .env أو أي API Key إلى GitHub.
+- ملف COMPLIANCE_MATRIX_AR.md يوضح مطابقة المتطلبات بدقة.

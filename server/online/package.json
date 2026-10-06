@@ -1,0 +1,7 @@
+{
+  "name":"madaar-online-server",
+  "private":true,
+  "version":"1.0.0",
+  "scripts":{"start":"node server.cjs","test":"node --test test.cjs"},
+  "dependencies":{"firebase-admin":"13.6.0"}
+}

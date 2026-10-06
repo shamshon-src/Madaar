@@ -1,0 +1,9 @@
+# Dependencies used by the supplied local package and the compatibility bridge.
+fastapi==0.115.8
+uvicorn==0.34.0
+pydantic==2.10.6
+pydantic-settings==2.7.1
+rapidfuzz==3.12.1
+# Local verification
+pytest==8.3.5
+httpx==0.28.1

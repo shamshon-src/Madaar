@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>معاينة حالات فَلَك التفاعلية - مدار</title>
+<style>
+:root{color-scheme:light;--page:#f3f8fd;--paper:#fff;--ink:#0b2d5b;--muted:#53627a;--line:#dce6f0;--blue:#1d5d8a;--deep:#113e5d;--screen:#201e49;--gold:#f0a92a;--red:#c92835;--green:#22cc66}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"Readex Pro",Tahoma,sans-serif}
+.app{min-height:100vh}
+.topbar{position:sticky;top:0;z-index:2;min-height:70px;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);background:#f3f8fdf2;backdrop-filter:blur(10px)}
+.brand{font-size:20px;font-weight:700}
+.preview-tag{padding:6px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:12px}
+main{width:min(1120px,100%);margin:auto;padding:32px 24px 48px}
+.intro{margin-bottom:20px}
+.intro h1{margin:0 0 7px;font-size:26px}
+.intro p{margin:0;color:var(--muted);line-height:1.7}
+.layout{display:grid;grid-template-columns:minmax(280px,1fr) minmax(330px,450px);gap:22px;align-items:stretch}
+.panel{padding:22px;border:1px solid #eaf0f6;border-radius:20px;background:var(--paper);box-shadow:0 10px 28px #10315712}
+.controls{display:flex;flex-direction:column;gap:14px}
+.controls h2{margin:0;font-size:17px}
+.states{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.state-button{min-height:46px;padding:8px 11px;border:1px solid var(--line);border-radius:12px;background:#f6f9fc;color:var(--ink);font:600 13px Tahoma,sans-serif;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.state-button:hover{transform:scale(1.015)}
+.state-button:active{transform:scale(.98)}
+.state-button[aria-pressed=true]{border-color:#0b3b70;background:#eaf3fb}
+.state-button[data-state=success][aria-pressed=true]{border-color:var(--green);background:#edfff4}
+.state-button[data-state=error][aria-pressed=true]{border-color:#ef7373;background:#fff2f2}
+.description{min-height:72px;margin:0;padding:12px 13px;border-radius:12px;background:#f3f8fd;color:var(--muted);font-size:13px;line-height:1.7}
+.run-sequence{min-height:45px;margin-top:auto;border:0;border-radius:12px;background:var(--green);color:var(--ink);font:700 14px Tahoma,sans-serif;cursor:pointer;transition:transform .15s ease}
+.run-sequence:hover{transform:scale(1.015)}
+.run-sequence:active{transform:scale(.98)}
+.stage{min-height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at center 68%,#eaf2f9 0,#f8fbfe 57%,#fff 100%)}
+.stage-label{align-self:flex-start;padding:6px 11px;border-radius:999px;background:#f1f6fb;font-size:11px;font-weight:700}
+.robot{width:min(430px,100%);overflow:visible}
+#body-group,#head-group,#arm-left,#arm-right,#eye-left,#eye-right,#antenna-light{transform-box:view-box}
+#body-group{transform-origin:503px 680px}
+#head-group{transform-origin:505px 320px}
+#arm-left{transform-origin:290px 650px}
+#arm-right{transform-origin:720px 650px}
+#eye-left,#eye-right{transform-origin:center}
+#eye-left ellipse:first-child,#eye-right ellipse:first-child{opacity:1}
+#eye-left .eye-blink-line,#eye-right .eye-blink-line{opacity:0}
+#antenna-light{transform-origin:center}
+#happy-left,#happy-right{display:none}
+#chest-logo{display:none;pointer-events:none}
+.chest-state-icon{display:none;pointer-events:none}
+.state-idle #chest-logo{display:block}
+.state-thinking #chest-thinking,
+.state-explaining #chest-explaining,
+.state-success #chest-success,
+.state-error #chest-error{display:block}
+.state-thinking #chest-thinking{transform-box:view-box;transform-origin:506px 622px;animation:gear-turn 4s linear infinite}
+.state-explaining #chest-screen{animation:screen-explain-glow 1.4s ease-in-out infinite alternate}
+.state-explaining #chest-explaining{animation:icon-explain-glow 1.4s ease-in-out infinite alternate}
+.state-success #chest-success{animation:icon-success-glow 1.3s ease-in-out infinite alternate}
+.state-error #chest-error{animation:icon-error-glow .8s ease-in-out infinite alternate}
+.state-idle #body-group{animation:float-anim 3.2s ease-in-out infinite}
+.state-idle #head-group{animation:float-head 3.2s ease-in-out infinite}
+.state-idle #eye-left ellipse:first-child,.state-idle #eye-right ellipse:first-child,
+.state-explaining #eye-left ellipse:first-child,.state-explaining #eye-right ellipse:first-child{animation:blink-opacity 5.2s ease-in-out infinite}
+.state-idle #eye-left .eye-blink-line,.state-idle #eye-right .eye-blink-line,
+.state-explaining #eye-left .eye-blink-line,.state-explaining #eye-right .eye-blink-line{animation:blink-line-opacity 5.2s ease-in-out infinite}
+.state-thinking #head-group{animation:thinking-head 2.5s ease-in-out infinite}
+.state-thinking #antenna-light{animation:antenna-thinking .48s ease-in-out infinite alternate}
+.state-thinking #eye-left,.state-thinking #eye-right{animation:eyes-reading 3.4s ease-in-out infinite}
+.state-thinking #eye-left ellipse:first-child,.state-thinking #eye-right ellipse:first-child{animation:blink-opacity 4.8s ease-in-out infinite}
+.state-thinking #eye-left .eye-blink-line,.state-thinking #eye-right .eye-blink-line{animation:blink-line-opacity 4.8s ease-in-out infinite}
+.state-explaining #arm-right{animation:explain-arm 3s ease-in-out infinite}
+.state-explaining #head-group{animation:explain-head 3s ease-in-out infinite}
+.state-explaining #antenna-light,.state-explaining #chest-screen,.state-explaining #chest-logo{animation:explain-glow 1.5s ease-in-out infinite alternate}
+.state-success #body-group{animation:float-anim 3.2s ease-in-out infinite}
+.state-success #arm-left{animation:celebrate-left 1.4s ease-in-out infinite alternate}
+.state-success #arm-right{animation:celebrate-right 1.4s ease-in-out infinite alternate}
+.state-success #antenna-light{animation:success-light .52s ease-in-out infinite alternate}
+.state-success #eye-left ellipse:first-child,.state-success #eye-right ellipse:first-child{opacity:0;animation:none}
+.state-success #eye-left .eye-blink-line,.state-success #eye-right .eye-blink-line{opacity:1;animation:none}
+.state-error #body-group{animation:error-shake .28s ease-in-out 5}
+.state-error #head-group{animation:error-lower .55s ease-in-out 1}
+.state-error #antenna-light{animation:error-light .7s ease-in-out infinite alternate}
+.state-error #arm-left,.state-error #arm-right{animation:error-arms .55s ease-in-out 1}
+.legend{margin:15px 0 0;color:var(--muted);font-size:11px;line-height:1.7;text-align:center}
+@keyframes float-anim{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes float-head{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes blink-opacity{0%,46%,50%,100%{opacity:1}48%{opacity:0}}
+@keyframes blink-line-opacity{0%,46%,50%,100%{opacity:0}48%{opacity:1}}
+@keyframes thinking-head{0%,100%{transform:rotate(0)}50%{transform:rotate(6deg)}}
+@keyframes antenna-thinking{from{opacity:.3;filter:drop-shadow(0 0 1px #c92835)}to{opacity:1;filter:drop-shadow(0 0 8px #ff3645)}}
+@keyframes gear-turn{to{transform:rotate(360deg)}}
+@keyframes screen-explain-glow{from{filter:drop-shadow(0 0 0 #22cc6600)}to{filter:drop-shadow(0 0 12px #22cc6688)}}
+@keyframes icon-explain-glow{from{opacity:.78;filter:drop-shadow(0 0 1px #f0a92a)}to{opacity:1;filter:drop-shadow(0 0 10px #f0a92a)}}
+@keyframes icon-success-glow{from{filter:drop-shadow(0 0 2px #22cc66)}to{filter:drop-shadow(0 0 12px #22cc66)}}
+@keyframes icon-error-glow{from{filter:drop-shadow(0 0 2px #ef5350)}to{filter:drop-shadow(0 0 9px #ef5350)}}
+@keyframes eyes-reading{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
+@keyframes explain-arm{0%,12%{transform:rotate(0)}38%,56%{transform:rotate(-28deg)}82%,100%{transform:rotate(0)}}
+@keyframes explain-head{0%,25%{transform:rotate(0)}55%{transform:rotate(6deg)}82%,100%{transform:rotate(0)}}
+@keyframes explain-glow{from{filter:drop-shadow(0 0 0 #22cc6600)}to{filter:drop-shadow(0 0 13px #22cc6699)}}
+@keyframes success-bounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-17px)}}
+@keyframes celebrate-left{from{transform:rotate(0)}to{transform:rotate(-9deg)}}
+@keyframes celebrate-right{from{transform:rotate(0)}to{transform:rotate(9deg)}}
+@keyframes success-light{from{filter:drop-shadow(0 0 2px #ff5555)}to{filter:drop-shadow(0 0 11px #ff3434)}}
+@keyframes error-shake{0%,100%{transform:translateX(0) translateY(4px)}25%{transform:translateX(-5px) translateY(7px)}75%{transform:translateX(5px) translateY(7px)}}
+@keyframes error-lower{to{transform:rotate(-5deg) translateY(5px)}}
+@keyframes error-light{from{opacity:.45}to{opacity:.85}}
+@keyframes error-arms{to{transform:translateY(4px)}}
+@media(max-width:740px){.topbar{padding:10px 15px}.layout{grid-template-columns:1fr}.stage{grid-row:1;min-height:360px}.controls{grid-row:2}.panel{padding:18px}main{padding:23px 15px 35px}}
+@media(max-width:380px){.states{grid-template-columns:1fr}.intro h1{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.robot *,.state-button,.run-sequence{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar"><span class="brand">مَدَار · معاينة فَلَك التفاعلية</span><span class="preview-tag">معاينة مستقلة · لا تغيّر اللعبة</span></header>
+  <main>
+    <section class="intro"><h1>حالات فَلَك التفاعلية</h1><p>هذه المعاينة تستخدم رسم فَلَك الفعلي من ملفات المشروع، مع الشعار في منتصف شاشة الصدر. اختر حالة لرؤية الحركة.</p></section>
+    <div class="layout">
+      <section class="panel controls">
+        <h2>جرّب الحالات</h2>
+        <div class="states" role="group" aria-label="حالات فَلَك">
+          <button class="state-button" type="button" data-state="idle" aria-pressed="true">هادئ · Idle</button>
+          <button class="state-button" type="button" data-state="thinking" aria-pressed="false">يفكّر · Thinking</button>
+          <button class="state-button" type="button" data-state="explaining" aria-pressed="false">يشرح · Explaining</button>
+          <button class="state-button" type="button" data-state="success" aria-pressed="false">نجاح · Success</button>
+          <button class="state-button" type="button" data-state="error" aria-pressed="false">تنبيه · Error</button>
+        </div>
+        <p class="description" id="description" aria-live="polite">فَلَك يطفو بهدوء، ويرمش من حين لآخر أثناء انتظار دورك.</p>
+        <button class="run-sequence" id="sequence" type="button">شاهد الحالات بالتتابع</button>
+      </section>
+      <section class="panel stage">
+        <span class="stage-label" id="stateLabel">الحالة الافتراضية</span>
+        <svg class="robot state-idle bot-idle" id="robot" viewBox="0 0 1007 940" role="img" aria-label="روبوت فَلَك في حالة الهدوء">
+          <defs><style>.cls-1{fill:#195c8e}</style></defs>
+          <g id="arm-left"><path fill="#103e5b" d="M226.35,771.75c-.3,0-.6,0-.91-.01-15.46-.49-27.59-13.42-27.1-28.88.09-2.79,2.8-69.18,56.94-132.69,49.79-58.4,134.66-92.17,138.71-94.17l36.67,34.67-59.59,30.08c-.3.16-30.95,16.22-73.17,65.75-40.89,47.97-43.57,97.65-43.59,98.14-.48,15.15-12.92,27.11-27.97,27.11Z"/><ellipse class="cls-1" cx="226.33" cy="766.09" rx="31.65" ry="58.64"/><ellipse class="cls-1" cx="255.83" cy="753.32" rx="13.96" ry="27.64" transform="translate(-342.39 228.84) rotate(-30)"/></g>
+          <g id="arm-right"><g id="arm-right-2"><path fill="#103e5b" d="M752.69,737.82c-.02-.5-2.72-50.38-43.59-98.33-42.22-49.53-72.87-65.59-73.17-65.75l-49.26,6.92,18.67-60c4.06,1.99,96.6,24.1,146.38,82.5,54.14,63.52,56.85,129.9,56.94,132.69l-55.97,1.78v.18Z"/></g><ellipse class="cls-1" cx="780.67" cy="759.09" rx="31.65" ry="58.64"/><ellipse class="cls-1" cx="751.17" cy="746.32" rx="27.64" ry="13.96" transform="translate(-270.75 1023.7) rotate(-60)"/></g>
+          <g id="body-group">
+            <g id="body-base"><path fill="#195c8e" d="M381.92,498.23h248c29.87,0,54.12,24.25,54.12,54.12v113.17c0,94.49-76.72,171.21-171.21,171.21h-13.84c-94.49,0-171.21-76.72-171.21-171.21v-113.17c0-29.87,24.25-54.12,54.12-54.12Z"/></g>
+            <g id="chest-screen">
+              <rect fill="#1f1b44" x="412.52" y="540.78" width="186.82" height="161.91" rx="42.2" ry="42.2"/>
+              <image id="chest-logo" href="images/logo_1.png" x="446" y="562" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>
+              <g id="chest-thinking" class="chest-state-icon" fill="none" stroke="#f0a92a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-label="رمز التفكير">
+                <path d="M506 585l8 3 8-4 7 7-4 8 3 8 8 4v10l-8 4-3 8 4 8-7 7-8-4-8 3-4 8h-10l-4-8-8-3-8 4-7-7 4-8-3-8-8-4v-10l8-4 3-8-4-8 7-7 8 4 8-3 4-8z"/>
+                <circle cx="506" cy="616" r="13"/>
+              </g>
+              <g id="chest-explaining" class="chest-state-icon" fill="none" stroke="#f0a92a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-label="رمز التلميح">
+                <path d="M490 617a16 16 0 1 1 32 0c0 8-7 11-8 19h-16c-1-8-8-11-8-19z"/>
+                <path d="M498 644h16m-13 8h10m-5-62v-8m-27 18-6-5m59 5 6-5"/>
+              </g>
+              <g id="chest-success" class="chest-state-icon" fill="none" stroke="#22cc66" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" aria-label="إجابة صحيحة">
+                <circle cx="506" cy="621" r="43" opacity=".35"/>
+                <path d="M484 621l15 16 31-34"/>
+              </g>
+              <g id="chest-error" class="chest-state-icon" fill="#ef5350" aria-label="تنبيه">
+                <path d="M506 581c5 0 9 4 9 9l-4 48h-10l-4-48c0-5 4-9 9-9z"/>
+                <circle cx="506" cy="651" r="7"/>
+              </g>
+            </g>
+            <g id="body-shadow"><path fill="#165175" d="M684.52,552.9v113.16c0,94.56-76.66,171.21-171.21,171.21h-13.84c-1.53,0-3.06-.02-4.58-.07,92.43-2.42,166.63-78.11,166.63-171.14v-113.16c0-29.9-24.24-54.13-54.13-54.13h23c29.89,0,54.13,24.23,54.13,54.13Z"/></g>
+          </g>
+          <g id="head-group">
+            <g id="antenna"><rect fill="#103e5b" x="498.14" y="134.73" width="15" height="46.5"/><path fill="#165175" d="M491.58,168.23h28.69c14.22,0,25.77,11.55,25.77,25.77v18.23h-80.22v-18.23c0-14.22,11.55-25.77,25.77-25.77Z"/></g>
+            <g id="head-base"><rect fill="#195c8e" x="316.3" y="191.06" width="379.25" height="272" rx="96.07" ry="96.07"/></g>
+            <g id="screen-face"><rect fill="#1f1b44" x="358.13" y="221.06" width="295.59" height="181" rx="74.8" ry="74.8"/></g>
+            <g id="head-shadow"><path fill="#165175" d="M694.9,286.59v79.86c0,53.06-43.02,96.07-96.07,96.07h-25.22c53.06,0,96.07-43.01,96.07-96.07v-79.86c0-53.06-43.01-96.07-96.07-96.07h25.22c53.05,0,96.07,43.01,96.07,96.07Z"/></g>
+            <g id="eye-left"><ellipse cx="430.39" cy="306.73" rx="16.5" ry="34" fill="#eea727"/><path class="eye-blink-line" d="M414 312Q430 280 447 312" fill="none" stroke="#eea727" stroke-width="12" stroke-linecap="round"/></g>
+            <g id="eye-right"><ellipse cx="579.39" cy="306.73" rx="16.5" ry="34" fill="#eea727"/><path class="eye-blink-line" d="M563 312Q579 280 596 312" fill="none" stroke="#eea727" stroke-width="12" stroke-linecap="round"/></g>
+            <g id="antenna-light"><circle cx="505.93" cy="121.73" r="19" fill="#b7232b"/></g>
+          </g>
+        </svg>
+        <p class="legend">حركة ناعمة وقصيرة؛ تتوقف تلقائيًا عند اختيار حالة أخرى، وتحترم إعداد تقليل الحركة في الجهاز.</p>
+      </section>
+    </div>
+  </main>
+</div>
+<script>
+(() => {
+  const robot = document.getElementById("robot");
+  const description = document.getElementById("description");
+  const label = document.getElementById("stateLabel");
+  const stateButtons = [...document.querySelectorAll(".state-button")];
+  const states = {
+    idle: ["الحالة الافتراضية", "فَلَك يطفو بهدوء، ويرمش من حين لآخر أثناء انتظار دورك.", "في انتظار دورك"],
+    thinking: ["حالة التفكير", "يميل رأس فَلَك قليلًا، ويتحرك نظره كأنه يقرأ السؤال، مع وميض ضوء الهوائي.", "يفكّر في إجابتك…"],
+    explaining: ["حالة الشرح والتلميح", "يرفع فَلَك يده للتوضيح، ويتوهج شعار النجمة على صدره برفق.", "فَلَك يشرح لك"],
+    success: ["حالة النجاح والاحتفال", "يبتسم فَلَك بعينين مغمضتين فرحًا، مع حركة جسم هادئة وتموّج لطيف ليديه.", "أحسنت! إجابة صحيحة"],
+    error: ["حالة التنبيه", "يخفض فَلَك رأسه ويميل جسمه باهتزاز لطيف عند الخطأ أو انتهاء الوقت.", "لا بأس، جرّب مرة أخرى"]
+  };
+  let sequenceTimer;
+  function setState(name) {
+    window.clearTimeout(sequenceTimer);
+    robot.classList.remove("state-idle", "state-thinking", "state-explaining", "state-success", "state-error", "bot-idle", "bot-thinking", "bot-explaining", "bot-success", "bot-error");
+    robot.classList.add(`state-${name}`, `bot-${name}`);
+    robot.setAttribute("aria-label", `روبوت فَلَك في ${states[name][0]}`);
+    label.textContent = states[name][0];
+    description.textContent = states[name][1];
+    stateButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.state === name)));
+  }
+  stateButtons.forEach((button) => button.addEventListener("click", () => setState(button.dataset.state)));
+  document.getElementById("sequence").addEventListener("click", () => {
+    window.clearTimeout(sequenceTimer);
+    const sequence = ["idle", "thinking", "explaining", "success", "error"];
+    let index = 0;
+    const next = () => {
+      setState(sequence[index]);
+      index += 1;
+      if (index < sequence.length) sequenceTimer = window.setTimeout(next, 2300);
+      else sequenceTimer = window.setTimeout(() => setState("idle"), 2300);
+    };
+    next();
+  });
+})();
+</script>
+</body>
+</html>

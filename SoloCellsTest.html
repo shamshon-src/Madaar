@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<script src="solo-cell-test-storage.js"></script>
+<script src="ui-ready.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مدار - الرقعة الجماعية</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="screens.css">
+<link rel="stylesheet" href="inline-game.css">
+<style>
+body{margin:0}
+a{color:#0A3F70}a:hover{color:#0B2545}
+</style>
+
+<link rel="stylesheet" href="theme.css"><script src="theme.js"></script><link rel="stylesheet" href="font-size.css"><script src="font-size.js"></script><script src="localization.js"></script><script src="board-panel-layout.js"></script><link rel="stylesheet" href="board-panel-layout.css"><link rel="stylesheet" href="ui-fixes.css"><link rel="stylesheet" href="solo-cell-test.css"></head>
+<body data-screen="board">
+<div dir="rtl" style="min-height: 900px; box-sizing: border-box; background: #F4F8FC; font-family: 'Readex Pro', Tahoma, sans-serif; color: #0B2545; display: flex; flex-direction: column">
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 32px; border-bottom: 1px solid #DCE6F0">
+<a href="Main.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0B2545"><img src="images/logo_1.png" alt="شعار مدار" style="width: 34px; height: 40px; object-fit: contain"><span style="font-size: 22px; font-weight: 700">مَدَار</span></a>
+<span style="background: #FFFFFF; border: 1px solid #DCE6F0; border-radius: 20px; padding: 6px 14px; font-size: 14px; font-weight: 500">الموضوع: الصيام • جماعي</span>
+<nav style="display: flex; align-items: center; gap: 8px">
+<a href="HowToPlay.html" style="min-height: 44px; padding: 0 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 6px; color: #0B2545; text-decoration: none; font-size: 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>كيف ألعب</a>
+<a href="Main.html" style="min-height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #DCE6F0; display: inline-flex; align-items: center; color: #0B2545; text-decoration: none; font-size: 14px">English</a>
+</nav></header><main style="width: 100%; max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 24px; flex-grow: 1; display: flex; flex-direction: column; gap: 24px; "><div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; justify-content: center"><section style="background: #FFFFFF; border-radius: 24px; padding: 18px; box-shadow: 0 4px 16px rgba(10,38,77,0.08); display: flex; flex-direction: column; gap: 16px; flex: 1 1 240px; align-self: stretch"><h2 style="margin: 0; font-size: 16px; font-weight: 600">اللاعبون</h2><div style="display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #22CC66"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #22CC66; color: #0B2545; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0">١</span><span style="flex-grow: 1; font-size: 15px; font-weight: 600">لاعب ١</span><span style="font-size: 14px; font-weight: 600; color: #53627A">12 / 30</span></div><div style="height: 8px; border-radius: 4px; background: #DCE6F0; overflow: hidden"><div style="width: 40%; height: 8px; background: #22CC66"></div></div><span style="font-size: 12px; font-weight: 600; color: #127A3D">دورك الآن</span></div><div style="display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE6F0"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F0A92A; color: #0B2545; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0">٢</span><span style="flex-grow: 1; font-size: 15px; font-weight: 600">لاعب ٢</span><span style="font-size: 14px; font-weight: 600; color: #53627A">8 / 30</span></div><div style="height: 8px; border-radius: 4px; background: #DCE6F0; overflow: hidden"><div style="width: 27%; height: 8px; background: #F0A92A"></div></div></div><p style="margin: 0; font-size: 13px; line-height: 1.7; color: #53627A">أول من يبلغ 30 نقطة يفوز.</p></section><div style="flex: 2 1 520px; display: flex; justify-content: center"><div style="width: 100%; max-width: 600px; aspect-ratio: 1 / 1; display: grid; grid-template-columns: 1.35fr repeat(5, minmax(0, 1fr)) 1.35fr; grid-template-rows: 1.35fr repeat(5, minmax(0, 1fr)) 1.35fr; gap: 3px; background: #DCE6F0; border-radius: 22px; padding: 3px; box-sizing: border-box; overflow: hidden; box-shadow: 0 4px 16px rgba(10,38,77,0.08)"><div style="grid-row: 7; grid-column: 2; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="height: 12px; background: #22CC66; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الشهادتان</span></div></div><div style="grid-row: 7; grid-column: 3; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="height: 12px; background: #22CC66; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الصلاة</span></div><span style="position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: #22CC66; border: 2px solid #FFFFFF; color: #0B2545; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.25)">١</span></div><div style="grid-row: 7; grid-column: 4; background: #FFFFFF; position: relative; display: flex; overflow: hidden; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7L12 3z" stroke="#F0A92A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 11px; font-weight: 600; text-align: center">مكافأة</span></div><div style="grid-row: 7; grid-column: 5; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="height: 12px; background: #22CC66; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الزكاة</span></div></div><div style="grid-row: 7; grid-column: 6; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="height: 12px; background: #22CC66; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الصوم</span></div></div><div style="grid-row: 6; grid-column: 7; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="width: 12px; background: #F0A92A; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الصدق</span></div></div><div style="grid-row: 5; grid-column: 7; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="width: 12px; background: #F0A92A; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الأمانة</span></div><span style="position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: #F0A92A; border: 2px solid #FFFFFF; color: #0B2545; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.25)">٢</span></div><div style="grid-row: 4; grid-column: 7; background: #FFFFFF; position: relative; display: flex; overflow: hidden; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><img src="images/card.png" alt="" style="width: 20px; height: 28px; object-fit: contain"><span style="font-size: 11px; font-weight: 600; text-align: center">بطاقة</span></div><div style="grid-row: 3; grid-column: 7; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="width: 12px; background: #F0A92A; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">بر الوالدين</span></div></div><div style="grid-row: 2; grid-column: 7; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="width: 12px; background: #F0A92A; flex-shrink: 0"></span><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الرحمة</span></div></div><div style="grid-row: 1; grid-column: 6; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الهجرة</span><span style="height: 12px; background: #1B5E8F; flex-shrink: 0"></span></div></div><div style="grid-row: 1; grid-column: 5; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">غزوة بدر</span><span style="height: 12px; background: #1B5E8F; flex-shrink: 0"></span></div></div><div style="grid-row: 1; grid-column: 4; background: #FFFFFF; position: relative; display: flex; overflow: hidden; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7L12 3z" stroke="#F0A92A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 11px; font-weight: 600; text-align: center">مكافأة</span></div><div style="grid-row: 1; grid-column: 3; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الحديبية</span><span style="height: 12px; background: #1B5E8F; flex-shrink: 0"></span></div></div><div style="grid-row: 1; grid-column: 2; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: column; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">فتح مكة</span><span style="height: 12px; background: #1B5E8F; flex-shrink: 0"></span></div></div><div style="grid-row: 2; grid-column: 1; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الحج</span><span style="width: 12px; background: #22CC66; flex-shrink: 0"></span></div></div><div style="grid-row: 3; grid-column: 1; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">العدل</span><span style="width: 12px; background: #F0A92A; flex-shrink: 0"></span></div></div><div style="grid-row: 4; grid-column: 1; background: #FFFFFF; position: relative; display: flex; overflow: hidden; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><img src="images/card.png" alt="" style="width: 20px; height: 28px; object-fit: contain"><span style="font-size: 11px; font-weight: 600; text-align: center">بطاقة</span></div><div style="grid-row: 5; grid-column: 1; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">الشورى</span><span style="width: 12px; background: #1B5E8F; flex-shrink: 0"></span></div></div><div style="grid-row: 6; grid-column: 1; background: #FFFFFF; position: relative; display: flex; overflow: hidden"><div style="display: flex; flex-direction: row; width: 100%"><span style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2px; font-size: 11px; font-weight: 500; line-height: 1.3; text-align: center">التوبة</span><span style="width: 12px; background: #F0A92A; flex-shrink: 0"></span></div></div><div style="grid-row: 7; grid-column: 1; background: #0A3F70; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #FFFFFF"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M19 12H5M11 6l-6 6 6 6" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 12px; font-weight: 700; text-align: center">البداية</span></div><div style="grid-row: 7; grid-column: 7; background: #E3EEF7; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #1B5E8F"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M8 5v14M16 5v14" stroke="#1B5E8F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 12px; font-weight: 700; text-align: center">استراحة</span></div><div style="grid-row: 1; grid-column: 7; background: #E3F8EC; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #127A3D"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 5v14M5 12h14" stroke="#127A3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 12px; font-weight: 700; text-align: center">مضاعفة ×٢</span></div><div style="grid-row: 1; grid-column: 1; background: #FDF1DC; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #8A5A00"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="#8A5A00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 12px; font-weight: 700; text-align: center">تحدٍّ ذكي</span></div><div style="grid-row: 2 / 7; grid-column: 2 / 7; background: #F4F8FC; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px"><img src="images/falak-bot.svg" alt="فلك" style="width: 84px; height: auto"><span style="font-size: 18px; font-weight: 700; color: #0A3F70">مَدَار</span><div style="display: flex; gap: 18px; align-items: flex-end"><a href="CardKnow.html" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; transform: rotate(6deg)"><span style="position: relative; width: 66px; height: 92px; display: block"><img src="images/card.png" alt="" style="position: absolute; top: 0; left: 6px; width: 60px; height: 84px; object-fit: contain"><img src="images/card.png" alt="رزمة اعرف" style="position: absolute; top: 6px; left: 0; width: 60px; height: 84px; object-fit: contain"></span><span style="background: #22CC66; color: #0B2545; border-radius: 8px; padding: 2px 10px; font-size: 12px; font-weight: 700">اعرف</span></a><a href="CardExplore.html" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; transform: rotate(0deg)"><span style="position: relative; width: 66px; height: 92px; display: block"><img src="images/card.png" alt="" style="position: absolute; top: 0; left: 6px; width: 60px; height: 84px; object-fit: contain"><img src="images/card.png" alt="رزمة استكشف" style="position: absolute; top: 6px; left: 0; width: 60px; height: 84px; object-fit: contain"></span><span style="background: #F0A92A; color: #0B2545; border-radius: 8px; padding: 2px 10px; font-size: 12px; font-weight: 700">استكشف</span></a><a href="CardAnalyze.html" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; transform: rotate(-6deg)"><span style="position: relative; width: 66px; height: 92px; display: block"><img src="images/card.png" alt="" style="position: absolute; top: 0; left: 6px; width: 60px; height: 84px; object-fit: contain"><img src="images/card.png" alt="رزمة حلل" style="position: absolute; top: 6px; left: 0; width: 60px; height: 84px; object-fit: contain"></span><span style="background: #1B5E8F; color: #FFFFFF; border-radius: 8px; padding: 2px 10px; font-size: 12px; font-weight: 700">حلل</span></a></div><span style="font-size: 12px; color: #53627A">اسحب من أي رزمة</span></div></div></div><section style="background: #FFFFFF; border-radius: 24px; padding: 18px; box-shadow: 0 4px 16px rgba(10,38,77,0.08); display: flex; flex-direction: column; gap: 16px; flex: 1 1 240px; align-self: stretch"><h2 style="margin: 0; font-size: 16px; font-weight: 600">سجل الجولة</h2><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #22CC66; color: #0B2545; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0">١</span><span>أجاب على «اعرف» وتقدّم خطوة.</span></li><li style="display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #F0A92A; color: #0B2545; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0">٢</span><span>وقف على «مكافأة» وأخذ نقاطًا إضافية.</span></li><li style="display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #22CC66; color: #0B2545; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0">١</span><span>أجاب على «استكشف» وتقدّم خطوتين.</span></li></ul><div style="flex-grow: 1"></div><div style="background: #E3F8EC; border-radius: 14px; padding: 12px; font-size: 14px; font-weight: 500; color: #127A3D">دورك يا لاعب ١: اسحب بطاقة من أي مستوى</div><a href="CardKnow.html" style="min-height: 52px; padding: 0 24px; border-radius: 16px; background: #22CC66; color: #0B2545; border: 1.5px solid transparent; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box; width: 100%">اسحب بطاقة</a></section></div></main>
+</div>
+<script src="service-config.js"></script>
+<script src="topic-catalog.js"></script>
+<script src="question-bank.js"></script>
+<script src="ai-service.js"></script>
+<script src="ai-ui.js"></script>
+<script src="game-engine.js"></script>
+<script>
+(() => {
+	const grid = document.querySelector("main > div:first-child > div:nth-child(2) > div");
+	const center = [...grid.children].find((cell) => cell.getAttribute("style")?.includes("grid-row: 2 / 7"));
+	const start = [...grid.children].find((cell) => cell.getAttribute("style")?.includes("grid-row: 7; grid-column: 1"));
+
+	grid.classList.add("board-grid");
+	[...grid.children].forEach((cell) => {
+		if (cell === center || cell === start) return;
+		const markers = [...cell.querySelectorAll(":scope > span")].filter((span) => /^\\d|^[٠-٩]/.test(span.textContent.trim()));
+		cell.replaceChildren(document.createTextNode("؟"));
+		cell.classList.add("board-hidden");
+		cell.dataset.pawnMarkup = markers.map((marker) => marker.outerHTML).join("");
+	});
+
+	if (start) {
+		const symbol=document.createElement('span');symbol.className='board-start-symbol';symbol.textContent='⚑';symbol.setAttribute('aria-hidden','true');
+		const label=document.createElement('span');label.textContent='البداية';start.replaceChildren(symbol,label);
+		start.classList.add("board-start");
+	}
+
+	const intro = document.querySelector("main > div:first-child > section:last-child");
+	intro.innerHTML = '<div class="board-intro"><span>بداية الجولة</span><img src="images/falak-bot.svg" alt="فلك"><h2>لنبدأ الرحلة!</h2><p>اسحب بطاقة لتتحرك على الرقعة.</p><a class="random-card-draw" href="CardKnow.html">اسحب بطاقة عشوائية</a></div>';
+	if (new URLSearchParams(location.search).has("overlay")) intro.style.visibility = "hidden";
+	const cardDestinations = ["CardKnow.html", "CardExplore.html", "CardAnalyze.html"];
+	function randomizeCardLink(link) {
+		if (!link || link.dataset.randomized) return;
+		link.dataset.randomized = "true";
+		const query = link.search;
+		const destination = () => {
+			if (query.includes('retry=1')) {
+				try { return {know:'CardKnow.html',explore:'CardExplore.html',analyze:'CardAnalyze.html'}[JSON.parse(localStorage.getItem('madaarActiveQuestion')).type] || 'CardKnow.html'; } catch { return 'CardKnow.html'; }
+			}
+			return cardDestinations[Math.floor(Math.random() * cardDestinations.length)];
+		};
+		link.href = `${destination()}${query}`;
+		link.addEventListener("click", (event) => {
+			event.preventDefault();
+			const target=`${destination()}${query}`;
+			if(window.MadaarPlay)window.MadaarPlay.open(target);else location.href=target;
+		});
+	}
+	randomizeCardLink(intro.querySelector(".random-card-draw"));
+	const deckLinks = [...grid.querySelectorAll('a[href^="Card"]')];
+	if (deckLinks.length) {
+		const drawLink = deckLinks[0];
+		const drawLabel = drawLink.querySelector("span:last-child");
+		if (drawLabel) {
+			drawLabel.textContent = "اسحب بطاقة عشوائية";
+			drawLabel.style.cssText = "background:transparent;color:#53627A;border-radius:0;padding:0;font-size:12px;font-weight:600";
+		}
+		drawLink.setAttribute("aria-label", "اسحب بطاقة عشوائية");
+		const deckImage = drawLink.querySelector("img");
+		if (deckImage) deckImage.alt = "بطاقات عشوائية";
+		deckLinks.slice(1).forEach((link) => link.remove());
+		randomizeCardLink(drawLink);
+		const deckCaption = drawLink.parentElement.nextElementSibling;
+		if (deckCaption) deckCaption.textContent = "مستوى البطاقة عشوائي: اعرف أو استكشف أو حلل";
+	}
+
+	let setup = {};
+	let playerNames = [];
+	let playerColors = [];
+	let playerScores = [];
+	let targetScore = "30";
+	try {
+		setup = JSON.parse(localStorage.getItem("madaarSetup") || "{}");
+		playerNames = JSON.parse(localStorage.getItem("madaarPlayers") || "[]");
+		playerColors = JSON.parse(localStorage.getItem("madaarPlayerColors") || "[]");
+		playerScores = JSON.parse(localStorage.getItem("madaarPlayerScores") || "[]");
+		targetScore = localStorage.getItem("madaarTargetScore") || "30";
+	} catch {}
+	if (Number(setup.mode) === 0) {
+		playerNames = ["اللاعب 1"];
+		playerColors = [];
+		playerScores = [0];
+	} else {
+		playerNames = playerNames.slice(0, 4);
+		playerColors = playerColors.slice(0, 4);
+		playerScores = playerScores.slice(0, 4);
+	}
+	const modeLabels = ["فردي", "جماعي", "تنافسي"];
+	const topic = setup.topic || setup.topicList || "الصيام";
+	document.querySelector("header > span").textContent = `${Number(setup.mode) === 0 ? "رحلتي الفردية" : "الموضوع"}: ${topic} • ${modeLabels[setup.mode] || "جماعي"}`;
+	const playerSection = document.querySelector("main > div:first-child > section:first-child");
+	const game = window.MadaarGame;
+	let state = game.getState();
+	const playerCards = [...playerSection.querySelectorAll(":scope > div")];
+	const playerCount = Number(setup.mode) === 0 ? 1 : playerNames.length || playerCards.length;
+	while (playerCards.length < playerNames.length) {
+		const card = playerCards.at(-1).cloneNode(true);
+		playerSection.insertBefore(card, playerSection.querySelector("p"));
+		playerCards.push(card);
+	}
+	while (playerCards.length > playerCount) playerCards.pop().remove();
+	if (!playerScores.length) playerScores = Array(playerCount).fill(0);
+	playerScores = playerScores.slice(0, playerCount);
+	while (playerScores.length < playerCount) playerScores.push(0);
+	playerCards.forEach((card, index) => {
+		const spans = card.querySelectorAll("span");
+		if (spans[0]) spans[0].textContent = String(index + 1);
+		if (playerNames[index]) card.querySelectorAll("span")[1].textContent = playerNames[index];
+		if (playerColors[index]) card.querySelector("span").style.backgroundColor = playerColors[index];
+		const score = card.querySelectorAll("span")[2];
+		if (score) score.textContent = `${playerScores[index]} / ${targetScore}`;
+	});
+	playerSection.querySelector("p").textContent = `أول من يبلغ ${targetScore} نقطة يفوز.`;
+	const historyPanel = document.createElement("section");
+	historyPanel.className = "board-history";
+	historyPanel.innerHTML = '<h3>السجل</h3><ol></ol>';
+	function renderHistory() {
+		const list = historyPanel.querySelector("ol");
+		list.replaceChildren();
+		const entries = state.history.slice(-8).reverse();
+		if (!entries.length) {
+			const empty = document.createElement("li");
+			empty.className = "board-history-empty";
+			empty.textContent = "ستظهر هنا الخلايا التي يكشفها اللاعبون.";
+			list.append(empty);
+			return;
+		}
+		entries.forEach((entry) => {
+			const item = document.createElement("li");
+			const marker = document.createElement("span");
+			marker.className = "board-history-marker";
+			marker.textContent = String(entry.player + 1);
+			marker.style.backgroundColor = playerColors[entry.player] || ["#22cc66", "#f0a92a", "#3b82f6", "#e34d59"][entry.player];
+			const description = document.createElement("span");
+			description.textContent = entry.message || `كشف «${entry.tile}».`;
+			item.append(marker, description);
+			list.append(item);
+		});
+	}
+	const cells = [...grid.children].filter((cell) => cell !== center && cell !== start).sort((left, right) => {
+		const coords = (cell) => {
+			const style = cell.getAttribute("style") || "";
+			return [Number(style.match(/grid-row:\s*(\d+)/)?.[1]), Number(style.match(/grid-column:\s*(\d+)/)?.[1])];
+		};
+		const [rowA, colA] = coords(left);
+		const [rowB, colB] = coords(right);
+		const pathIndex = ([row, column]) => {
+			if (row === 7 && column >= 2) return column - 2;
+			if (column === 7 && row <= 6) return 6 + (6 - row);
+			if (row === 1 && column <= 6) return 12 + (6 - column);
+			return 18 + (row - 2);
+		};
+		return pathIndex(coords(left)) - pathIndex(coords(right));
+	});
+	let landingPositions = state.progress.map((progress) => progress % 24 === 0 ? -1 : progress % 24 - 1);
+	const tileIcons = {
+		card: '<rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8 7h8M8 11h8M8 15h5"></path>',
+		lamp: '<path d="M9 18h6M10 22h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 4H9c0-2 0-3-1-4z"></path>',
+		multiplier: '<path d="M7 7l10 10M17 7 7 17"></path><text x="12" y="6" text-anchor="middle" stroke="none" fill="currentColor" font-size="6" font-weight="700">٢</text>',
+		retry: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path>',
+		knowledge: '<path d="M5 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H5zM19 4h-2a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h2z"></path>',
+		speed: '<path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-7-1 3-2 4-3 4 0-4-2-7-4-10 0 5-1 7-3 10-1 1-2 3-2 5 0 3 3 5 8 5z"></path>',
+		bigSolo: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"></path>',
+		streak: '<path d="M13 2 4 14h7l-1 8 10-13h-7z"></path>',
+		super: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"></path>',
+		duel: '<path d="m6 4 12 16M18 4 6 20M4 6l2-2 2 2M16 18l2 2 2-2"></path>',
+		team: '<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>'
+	};
+	function tileEdge(cell) {
+		const style = cell.getAttribute("style") || "";
+		const row = Number(style.match(/grid-row:\s*(\d+)/)?.[1]);
+		const column = Number(style.match(/grid-column:\s*(\d+)/)?.[1]);
+		if (row === 7) return "top";
+		if (row === 1) return "bottom";
+		if (column === 1) return "right";
+		return "left";
+	}
+	function showCell(index, revealed = true) {
+		revealed = true;
+		const cell = cells[index];
+		if (!cell) return;
+		const tile = game.getTile(index,state.displayPlayer??state.currentPlayer);
+		if(revealed){cell.dataset.tileType=tile.type;cell.dataset.tileColor=tile.color;}
+		else{delete cell.dataset.tileType;delete cell.dataset.tileColor;}
+		cell.classList.toggle("board-hidden", !revealed);
+		cell.classList.toggle("board-revealed", revealed);
+		cell.dataset.edge = tileEdge(cell);
+		cell.style.setProperty("--tile-accent", tile.color);
+		const surfaces = {card:'#ffffff',lamp:'#FDF1DC',multiplier:'#FDF1DC',retry:'#E3F3FC',knowledge:'#E3F3FC',speed:'#FCE6E8',bigSolo:'#FCE6E8',super:'#FCE6E8',duel:'#FCE6E8',streak:'#E3F5E9',team:'#E3F5E9'};
+		cell.style.setProperty('--tile-surface', surfaces[tile.type] || '#ffffff');
+		cell.style.backgroundColor = revealed ? "#ffffff" : "";
+		cell.style.color = revealed ? tile.color : "";
+		if (revealed) {
+			const band = document.createElement("span");
+			band.className = "board-tile-band";
+			band.setAttribute("aria-hidden", "true");
+			cell.replaceChildren(band);
+			if (tile.type !== "card") {
+				const content = document.createElement("span");
+				content.className = "board-tile-content";
+				content.innerHTML = `<svg class="board-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${tileIcons[tile.type] || tileIcons.card}</svg><span class="board-tile-label"></span>`;
+				content.querySelector(".board-tile-label").textContent = tile.label;
+				cell.append(content);
+			}
+		} else {
+			cell.replaceChildren(document.createTextNode("؟"));
+		}
+		cell.setAttribute("aria-label", revealed ? tile.label : "خلية مخفية");
+	}
+	function renderPawns() {
+		cells.forEach((cell, index) => {
+			const pawns = state.names.map((_, player) => landingPositions[player] === index ? player : -1).filter((player) => player >= 0);
+			const startPawns = landingPositions.map((position, player) => position < 0 ? player : -1).filter((player) => player >= 0);
+			cell.querySelectorAll(".board-pawn").forEach((pawn) => pawn.remove());
+			for (const player of pawns) {
+				const pawn = document.createElement("span");
+				pawn.className = "board-pawn";
+				pawn.textContent = String(player + 1);
+				pawn.style.backgroundColor = playerColors[player] || ["#22cc66", "#f0a92a", "#e34d59", "#387db1"][player];
+				cell.append(pawn);
+			}
+		});
+		const startPawnContainer = start || document.createElement("div");
+		startPawnContainer.querySelectorAll(".board-pawn").forEach((pawn) => pawn.remove());
+		startPawnContainer.querySelector(".board-start-pawns")?.remove();
+		const startPawns = document.createElement("div");
+		startPawns.className = "board-start-pawns";
+		startPawnContainer.append(startPawns);
+		landingPositions.map((position, player) => position < 0 ? player : -1).filter((player) => player >= 0).forEach((player) => {
+			const pawn = document.createElement("span");
+			pawn.className = "board-pawn";
+			pawn.textContent = String(player + 1);
+			pawn.style.backgroundColor = playerColors[player] || ["#22cc66", "#f0a92a", "#e34d59", "#387db1"][player];
+			startPawns.append(pawn);
+		});
+	}
+	function renderSidebar(notice = "") {
+		const player = state.currentPlayer;
+		const currentPosition = landingPositions[player];
+		if (currentPosition >= 0) showCell(currentPosition);
+		playerCards.forEach((card, index) => {
+			const score = card.querySelectorAll("span")[2];
+			if (score) score.textContent = `${state.scores[index]} / ${targetScore}`;
+			const progress = card.children[1]?.firstElementChild;
+			if (progress) progress.style.width = `${Math.min(100, state.scores[index] / Number(targetScore) * 100)}%`;
+			let stats = card.querySelector(".player-round-stats");
+			if (!stats) {
+				stats = document.createElement("span");
+				stats.className = "player-round-stats";
+				card.children[1]?.after(stats);
+			}
+			stats.textContent = `${state.laps[index]} دورة · ${state.boosts[index].lamps} 💡`;
+			card.classList.toggle("active-player", index === player);
+			card.style.setProperty('border',index===player?`2px solid ${playerColors[index]||'#387db1'}`:'1px solid var(--line)','important');
+			card.style.setProperty('box-shadow',index===player?`0 0 0 2px ${playerColors[index]||'#387db1'}33`:'none');
+			let turnMarker = [...card.querySelectorAll("span")].find((span) => span.classList.contains("active-turn-marker") || span.textContent.trim() === "دورك الآن" || span.textContent.trim() === "Your Turn");
+			if (index === player) {
+				if (!turnMarker) {
+					turnMarker = document.createElement("span");
+					turnMarker.style.cssText = "font-size:12px;color:#127A3D;font-weight:700";
+					card.append(turnMarker);
+				}
+				turnMarker.classList.add("active-turn-marker");
+				turnMarker.textContent = "دورك الآن";
+			} else turnMarker?.remove();
+		});
+		renderPawns();
+		const landing = state.lastLanding;
+		grid.querySelectorAll('a').forEach(link=>{link.inert=Boolean(state.actionPending||state.pausedForSolo);if(link.inert)link.setAttribute('aria-disabled','true');else link.removeAttribute('aria-disabled');});
+		if(state.pausedForSolo){intro.replaceChildren();const heading=document.createElement('h2');heading.textContent='توقفت اللعبة الجماعية';const text=document.createElement('p');text.textContent='بقي لاعب واحد. يمكنك بدء لعبة فردية أو العودة للرئيسية.';const button=document.createElement('button');button.textContent='الدخول إلى لعبة فردية';button.className='ai-submit';button.onclick=()=>window.MadaarSession.startSolo();const home=document.createElement('a');home.href='Main.html';home.textContent='الرئيسية';intro.append(heading,text,button,home);return;}
+		const message = notice || state.lastMessage;
+		let actions = '<a class="random-card-draw" href="CardKnow.html">اسحب بطاقة عشوائية</a>';
+		if (state.awaitingRetry) actions = '<a class="random-card-draw" href="CardKnow.html?retry=1">إعادة المحاولة ببطاقة عشوائية</a>';
+		else if (state.actionPending && landing?.type === "speed") actions = '<a href="CardKnow.html?speedrun=1&challenge=speed">ابدأ سباق الثواني (15 ثانية)</a>';
+		else if (state.actionPending && landing?.type === "bigSolo") actions = '<a class="random-card-draw" href="CardKnow.html?challenge=normal">استمرار عادي</a><a href="CardAnalyze.html?challenge=big">اختر التحدي الكبير: حلل مقابل 3 نقاط</a>';
+		else if (state.actionPending && landing?.type === "super") {
+			const trailing = state.scores.map((score, index) => ({ score, index })).filter(({ index }) => index !== player).sort((a, b) => a.score - b.score)[0];
+			actions = `<a href="CardAnalyze.html?challenge=super&target=${player}">أتحدى بنفسي (+3 نقاط)</a>${trailing ? `<a href="CardAnalyze.html?challenge=super&target=${trailing.index}">أوجّه التحدي إلى ${state.names[trailing.index]}</a>` : ""}`;
+		}
+		else if (state.actionPending && landing?.type === "team") actions = state.names.map((name, index) => index === player ? "" : `<a class="random-card-draw" href="CardKnow.html?teamup=${index}&challenge=team">تعاون مع ${name}</a>`).join("") || '<a class="random-card-draw" href="CardKnow.html?challenge=normal">تابع بسؤال عادي</a>';
+		else if (state.actionPending && landing?.type === "duel") actions = state.names.map((name, index) => index === player ? "" : `<a href="CardKnow.html?duel=${index}&challenge=duel">تحدَّ ${name} في مبارزة سريعة</a>`).join("") || '<a class="random-card-draw" href="CardKnow.html?challenge=normal">تابع بسؤال عادي</a>';
+		const hintAction = "";
+		if (state.actionPending && landing?.type === "arena") actions = `<a href="CardKnow.html?duel=${landing.opponent}&arena=1&challenge=arena">ابدأ حلبة المناظرة (+2 نقاط)</a>`;
+	const tileTypeNames = {
+			lamp: "مساعدة",
+			multiplier: "مساعدة",
+			retry: "أمان",
+			knowledge: "أمان",
+			speed: "تحدٍ",
+			bigSolo: "تحدٍ",
+			super: "تحدٍ",
+			duel: "تحدٍ",
+			streak: "إنجاز",
+			team: "تعاون",
+			card: "بطاقة"
+		};
+		const tileIcon = landing ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${tileIcons[landing.type] || tileIcons.card}</svg>` : '<img src="images/falak-bot.svg" alt="فلك">';
+		const tileSummary = landing ? `<div class="board-reveal-summary"><span class="board-reveal-icon" style="--tile-accent:${landing.color}">${tileIcon}<span>${landing.label}</span></span><span class="board-reveal-arrow" aria-hidden="true">←</span><span class="board-reveal-question" aria-hidden="true">؟</span></div>` : `<div class="board-reveal-summary"><img src="images/falak-bot.svg" alt="فلك"></div>`;
+		const heading = landing?.label || "لنبدأ الرحلة!";
+		const description = landing?.description || message;
+		const typeLabel = landing ? tileTypeNames[landing.type] || "خلية" : "بداية الجولة";
+		intro.innerHTML = `<div class="board-intro board-intro-state" data-tile-type="${landing?.type || "card"}"><span class="board-status-badge">${landing ? `كشفت خلية · ${typeLabel}` : typeLabel}</span>${tileSummary}<h2>${heading}</h2><p>${description}</p>${landing?.type === "lamp" ? '<span class="board-reward-chip">💡 +1 مصباح</span>' : ""}${landing?.type === "multiplier" ? '<span class="board-reward-chip">×٢ نقاط السؤال القادم</span>' : ""}${landing?.type === "retry" ? '<span class="board-reward-chip">محاولة ثانية مجانية</span>' : ""}${landing?.type === "knowledge" ? `<span class="board-knowledge-note">${message}</span>` : ""}<div class="board-intro-actions">${actions}${hintAction}</div></div>`;
+		intro.querySelectorAll(".random-card-draw").forEach(randomizeCardLink);
+		renderHistory();
+	}
+	let lastAnswer = null;
+	try { lastAnswer = JSON.parse(localStorage.getItem("madaarAnswer") || "null"); } catch (error) { console.error("Could not read the last answer.", error); }
+	const turnResult = new URLSearchParams(location.search).has("overlay") || new URLSearchParams(location.search).has('view') ? null : game.resolveTurn(lastAnswer);
+	state = game.getState();
+	if (!new URLSearchParams(location.search).has("overlay") && state.scores.some(score => score >= Number(targetScore))) {
+		location.replace("End.html");
+		return;
+	}
+	landingPositions = state.progress.map((progress) => progress % 24 === 0 ? -1 : progress % 24 - 1);
+	if (turnResult) {
+		if (turnResult.retry) renderSidebar(turnResult.message);
+		else renderSidebar(turnResult.message);
+	} else {
+		renderSidebar();
+	}
+	state.tiles.forEach((_, index) => showCell(index, landingPositions.includes(index)));
+	if (!new URLSearchParams(location.search).has("overlay") && state.lastLanding) {
+		let pendingTilePulse = null;
+		try {
+			pendingTilePulse = JSON.parse(localStorage.getItem("madaarPendingTilePulse") || "null");
+		} catch (error) {
+			console.error("Could not read the pending tile animation.", error);
+		}
+		const landingPlayer = Number(state.lastLanding.player);
+		if (pendingTilePulse
+			&& pendingTilePulse.player === landingPlayer
+			&& pendingTilePulse.index === state.lastLanding.index
+			&& pendingTilePulse.progress === state.progress[landingPlayer]) {
+			cells[pendingTilePulse.index]?.classList.add("board-reveal-pulse");
+			localStorage.removeItem("madaarPendingTilePulse");
+		}
+	}
+	renderPawns();
+	window.MadaarBoard={panel:intro,showPlayer(player){state.displayPlayer=player;state.tiles.forEach((_,index)=>showCell(index));renderPawns();},refresh(){
+		const answer=JSON.parse(localStorage.getItem('madaarAnswer')||'null');
+		const result=game.resolveTurn(answer);state=game.getState();
+		state.displayPlayer=state.lastLanding?.player??state.currentPlayer;
+		if(state.finished){location.assign('End.html');return;}
+		landingPositions=state.progress.map(progress=>progress%24===0?-1:progress%24-1);
+		renderSidebar(result?.message||'');state.tiles.forEach((_,index)=>showCell(index));renderPawns();
+	}};
+})();
+</script>
+<script src="session-service.js"></script>
+<script src="app-ui.js"></script>
+<script src="navigation.js"></script><script src="cell-cards.js"></script><script src="play-controller.js"></script><script src="solo-cell-test.js"></script></body>
+</html>

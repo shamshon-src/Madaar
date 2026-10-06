@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<script src="ui-ready.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مدار - الإعداد والتخصيص</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="screens.css">
+<style>
+body{margin:0}
+a{color:#0A3F70}a:hover{color:#0B2545}
+:root{color-scheme:light;--ink:#082b5c;--muted:#425b7d;--line:#e1eaf4;--blue:#082f69;--green:#e1f7ea}
+*{box-sizing:border-box}
+body{background:#f3f8fd;color:var(--ink);font-family:'Readex Pro',Tahoma,sans-serif}
+body>div{min-height:100vh!important;background:#f3f8fd!important;color:var(--ink)!important}
+header{min-height:70px;padding:0 30px!important;border-bottom-color:#e4edf5!important;flex-wrap:nowrap!important}
+header>a:first-child img{width:38px!important;height:42px!important}
+header nav{gap:12px!important}
+header nav a{color:var(--ink)!important}
+header nav a:last-child{border-color:var(--line)!important;border-radius:12px!important}
+main{max-width:1040px!important;padding:24px 0 64px!important;gap:22px!important}
+main>div:first-child h1{font-size:30px!important;color:var(--ink)}
+main>div:first-child p{color:var(--muted)!important}
+main>div:nth-child(2){display:grid!important;grid-template-columns:minmax(0,654px) minmax(300px,328px);gap:20px!important;align-items:start!important;direction:rtl}
+main>div:nth-child(2)>section{min-width:0!important;border-radius:20px!important;box-shadow:0 8px 22px rgba(16,49,87,.08)!important}
+main>div:nth-child(2)>section:first-child{padding:24px!important;gap:16px!important}
+main>div:nth-child(2)>section:first-child>div:first-child{display:none!important}
+main>div:nth-child(2)>section:first-child>div{gap:8px!important}
+main>div:nth-child(2)>section:first-child h2{font-size:14px!important;color:var(--ink)}
+main>div:nth-child(2)>section:first-child>div:nth-of-type(2)>div>button:nth-child(3){display:none!important}
+main>div:nth-child(2)>section:first-child button[role="radio"]{min-height:60px!important;border:1px solid var(--line)!important;background:#fff!important;border-radius:14px!important;padding:10px 12px!important;color:var(--ink)!important;transition:background .15s,border-color .15s}
+main>div:nth-child(2)>section:first-child button[role="radio"].is-selected{border:2px solid var(--blue)!important;background:#e7f1fb!important}
+main>div:nth-child(2)>section:first-child button[role="radio"]:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #83b5e7;outline-offset:2px}
+.new-learner{display:flex;align-items:center;gap:12px;min-height:68px;padding:10px 14px;border:1px dotted #cad8e8;border-radius:14px;color:var(--ink)}
+.new-learner input{width:20px;height:20px;margin:0;accent-color:var(--blue);flex:0 0 auto}
+.new-learner span{display:flex;flex-direction:column;gap:3px}
+.new-learner strong{font-size:14px}
+.new-learner small{color:var(--muted);font-size:11px;line-height:1.5}
+.topic-field{border:2px solid var(--blue)!important;border-radius:14px!important;min-height:54px}
+.topic-field input{min-width:0!important;font-size:15px!important}
+.topic-select{min-height:46px;border:1px solid var(--line);border-radius:13px;padding:0 14px;background:#fff;color:var(--ink);font:inherit;font-size:14px;width:100%}
+.topic-help{font-size:12px!important;color:var(--muted)!important}
+main>div:nth-child(2)>section:first-child>.setup-mode>div{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px!important}
+main>div:nth-child(2)>section:first-child>.setup-mode>div>button{min-width:0!important;flex:initial!important;min-height:80px!important;padding:9px!important}
+main>div:nth-child(2)>section:first-child>.setup-mode>div>button>span:nth-child(2){min-width:0}
+main>div:nth-child(2)>section:first-child>.setup-mode>div>button>span:nth-child(2)>span:first-child{font-size:14px!important}
+main>div:nth-child(2)>section:first-child>.setup-mode>div>button>span:nth-child(2)>span:last-child{font-size:11px!important;line-height:1.4}
+main>div:nth-child(2)>section:last-child{padding:20px!important;gap:14px!important;align-self:start!important}
+main>div:nth-child(2)>section:last-child img{width:140px!important}
+main>div:nth-child(2)>section:last-child a[href="Players.html"]{min-height:46px!important;border-radius:12px!important;background:var(--blue)!important}
+main>div:nth-child(2)>section:last-child>div:nth-child(2){background:var(--green)!important;border-radius:12px!important}
+@media(max-width:780px){header{padding:0 16px!important}main{padding:22px 16px 40px!important}main>div:nth-child(2){grid-template-columns:minmax(0,1fr);direction:rtl}main>div:nth-child(2)>section:last-child{grid-row:2}main>div:nth-child(2)>section:first-child>.setup-mode>div{grid-template-columns:1fr!important}}
+@media(max-width:430px){main>div:nth-child(2)>section:first-child{padding:18px!important}main>div:nth-child(2)>section:first-child>.setup-mode>div>button{min-height:68px!important}}
+</style>
+
+<link rel="stylesheet" href="theme.css"><script src="theme.js"></script><link rel="stylesheet" href="font-size.css"><script src="font-size.js"></script><script src="localization.js"></script><script src="board-panel-layout.js"></script><link rel="stylesheet" href="board-panel-layout.css"><link rel="stylesheet" href="ui-fixes.css"></head>
+<body data-screen="setup">
+<div dir="rtl" style="min-height: 900px; box-sizing: border-box; background: #F4F8FC; font-family: 'Readex Pro', Tahoma, sans-serif; color: #0B2545; display: flex; flex-direction: column">
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 32px; border-bottom: 1px solid #DCE6F0">
+<a href="Main.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0B2545"><img src="images/logo_1.png" alt="شعار مدار" style="width: 34px; height: 40px; object-fit: contain"><span style="font-size: 22px; font-weight: 700">مَدَار</span></a>
+
+<nav style="display: flex; align-items: center; gap: 8px">
+<a href="HowToPlay.html" style="min-height: 44px; padding: 0 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 6px; color: #0B2545; text-decoration: none; font-size: 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>كيف ألعب</a>
+<a href="Main.html" style="min-height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #DCE6F0; display: inline-flex; align-items: center; color: #0B2545; text-decoration: none; font-size: 14px">English</a>
+</nav></header><main style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 32px 24px; flex-grow: 1; display: flex; flex-direction: column; gap: 24px; "><div style="display: flex; flex-direction: column; gap: 6px"><h1 style="margin: 0; font-size: 32px; font-weight: 700">إعداد اللعبة</h1><p style="margin: 0; font-size: 16px; line-height: 1.7; color: #53627A">خصص رحلتك قبل أن تبدأ.</p></div><div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start"><section style="background: #FFFFFF; border-radius: 24px; padding: 28px; box-shadow: 0 4px 16px rgba(10,38,77,0.08); display: flex; flex-direction: column; gap: 16px; flex: 2 1 560px">
+<div style="display: flex; flex-direction: column; gap: 10px"><h2 style="margin: 0; font-size: 15px; font-weight: 600">اللغة</h2><div style="display: flex; gap: 4px; padding: 4px; background: #F4F8FC; border-radius: 14px; max-width: 360px"><button type="button" style="flex: 1 1 0; min-height: 44px; border: none; border-radius: 10px; background: #0A3F70; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">العربية</button><button type="button" style="flex: 1 1 0; min-height: 44px; border: none; border-radius: 10px; background: transparent; color: #0B2545; font-family: inherit; font-size: 15px; font-weight: 400; cursor: pointer">English</button></div></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><h2 style="margin: 0; font-size: 15px; font-weight: 600">الفئة</h2><div style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" style="flex: 1 1 200px; min-height: 64px; border: 2px solid #0A3F70; background: #E3EEF7; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; font-family: inherit; text-align: right; cursor: pointer; color: #0B2545"><span style="width: 40px; height: 40px; border-radius: 12px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">الناشئة</span><span style="font-size: 12px; color: #53627A">أقل من 16 عامًا</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #0A3F70; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: #0A3F70"></span></span></button><button type="button" style="flex: 1 1 200px; min-height: 64px; border: 1px solid #DCE6F0; background: #FFFFFF; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; font-family: inherit; text-align: right; cursor: pointer; color: #0B2545"><span style="width: 40px; height: 40px; border-radius: 12px; background: #F4F8FC; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M16 3.5a4 4 0 0 1 0 7M22 21a7 7 0 0 0-4-6.3" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">الشباب والبالغون</span><span style="font-size: 12px; color: #53627A">16 عامًا فأكثر</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A9B8CA; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center"></span></button><button type="button" style="flex: 1 1 200px; min-height: 64px; border: 1px solid #DCE6F0; background: #FFFFFF; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; font-family: inherit; text-align: right; cursor: pointer; color: #0B2545"><span style="width: 40px; height: 40px; border-radius: 12px; background: #F4F8FC; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">المسلمون الجدد</span><span style="font-size: 12px; color: #53627A">من مختلف الأعمار</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A9B8CA; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center"></span></button></div></div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<label class="new-learner"><input id="new-learner" type="checkbox"><span><strong>أتعلم الإسلام حديثًا</strong></span></label>
+<label for="topic-category" style="font-size: 14px; font-weight: 600">اختر القسم</label>
+<div class="topic-controls"><select class="topic-select" id="topic-category"><option value="worship">فقه العبادات</option><option value="transactions">فقه المعاملات المالية والأخلاقية</option><option value="belief">أصول العقيدة وأركان الإيمان</option><option value="history">السيرة النبوية والتاريخ</option><option value="quran">التفسير وعلوم القرآن</option><option value="ethics">الآداب والأخلاق</option></select></div>
+
+<label for="topic" style="font-size: 15px; font-weight: 600">ما الموضوع الذي تريد تعلّمه؟</label>
+<div style="display: flex; align-items: center; gap: 10px; border: 2px solid #0A3F70; border-radius: 16px; padding: 0 16px; background: #FFFFFF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><input id="topic" type="text" value="الصيام" placeholder="مثال: الصيام، بر الوالدين، غزوة بدر" style="flex-grow: 1; min-height: 56px; border: none; outline: none; font-family: inherit; font-size: 17px; color: #0B2545; background: transparent"></div>
+<button class="topic-random" id="random-topic" type="button">موضوع عشوائي من القسم المحدد</button>
+<p class="topic-suggestion" id="topic-suggestion" aria-live="polite"></p>
+<p class="topic-help" style="margin: 0; font-size: 13px; line-height: 1.7; color: #53627A">سنولّد الأسئلة من المصادر المعتمدة. إذا لم تتوفر مصادر كافية عن موضوعك، سنقترح عليك موضوعات قريبة.</p>
+</div>
+<div class="setup-mode" style="display: flex; flex-direction: column; gap: 10px"><h2 style="margin: 0; font-size: 15px; font-weight: 600">نمط اللعب</h2><div style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" style="flex: 1 1 200px; min-height: 64px; border: 1px solid #DCE6F0; background: #FFFFFF; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; font-family: inherit; text-align: right; cursor: pointer; color: #0B2545"><span style="width: 40px; height: 40px; border-radius: 12px; background: #F4F8FC; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">فردي</span><span style="font-size: 12px; color: #53627A">رحلة بمحطات تتدرج معك</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A9B8CA; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center"></span></button><button type="button" style="flex: 1 1 200px; min-height: 64px; border: 2px solid #0A3F70; background: #E3EEF7; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; font-family: inherit; text-align: right; cursor: pointer; color: #0B2545"><span style="width: 40px; height: 40px; border-radius: 12px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M16 3.5a4 4 0 0 1 0 7M22 21a7 7 0 0 0-4-6.3" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">جماعي على جهاز واحد</span><span style="font-size: 12px; color: #53627A">رقعة لوحية للفصل أو العائلة</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #0A3F70; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: #0A3F70"></span></span></button><button type="button" style="flex: 1 1 200px; min-height: 64px; border: 1px solid #DCE6F0; background: #FFFFFF; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; font-family: inherit; text-align: right; cursor: pointer; color: #0B2545"><span style="width: 40px; height: 40px; border-radius: 12px; background: #F4F8FC; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="#0A3F70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">تنافسي عن بُعد</span><span style="font-size: 12px; color: #53627A">غرفة برمز مع أصدقائك</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #A9B8CA; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center"></span></button></div></div>
+<div class="setup-score"><h2>النقاط المطلوبة للفوز</h2><div class="setup-score-options" role="group" aria-label="النقاط المطلوبة للفوز"><button type="button" data-target-score="20" aria-pressed="false">20 نقطة</button><button type="button" data-target-score="30" aria-pressed="true">30 نقطة</button><button type="button" data-target-score="50" aria-pressed="false">50 نقطة</button></div><p>تنتهي اللعبة عند الوصول إلى الهدف أو تجاوزه.</p></div>
+</section><section style="background: #FFFFFF; border-radius: 24px; padding: 24px; box-shadow: 0 4px 16px rgba(10,38,77,0.08); display: flex; flex-direction: column; gap: 16px; flex: 1 1 280px; align-self: flex-start"><div style="display: flex; flex-direction: column; align-items: center; gap: 8px"><div style="background: #FFFFFF; color: #0B2545; border-radius: 18px 18px 18px 4px; padding: 12px 16px; font-size: 15px; font-weight: 500; line-height: 1.6; max-width: 240px; box-shadow: 0 4px 16px rgba(10,38,77,0.08)">اكتب أي موضوع يخطر ببالك، وأنا أجهّز لك الأسئلة!</div><img src="images/falak-bot.svg" alt="فلك" style="width: 150px; height: auto"></div>
+<a href="Players.html" style="min-height: 52px; padding: 0 24px; border-radius: 16px; background: #0A3F70; color: #FFFFFF; border: 1.5px solid transparent; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box; width: 100%">التالي</a></section></div></main>
+</div>
+<script src="topic-catalog.js"></script>
+<script>
+(() => {
+	const storageKey = "madaarSetup";
+	const config = document.querySelector("main > div:nth-child(2) > section:first-child");
+	let saved = {};
+	try {
+		saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+	} catch {}
+
+	config.querySelectorAll("h2").forEach((heading) => {
+		const title = heading.textContent.trim();
+		const groupName = title === "الفئة" ? "category" : title === "نمط اللعب" ? "mode" : null;
+		if (!groupName) return;
+		const buttons = [...heading.nextElementSibling.querySelectorAll(":scope > button")];
+		if (groupName === "category") buttons.splice(2);
+        if(groupName === "mode") buttons.splice(2).forEach(button=>button.remove());
+		buttons.forEach((button, index) => {
+			button.dataset.optionGroup = groupName;
+			button.dataset.optionValue = String(index);
+			button.classList.add("radio-option");
+			button.setAttribute("role", "radio");
+			button.addEventListener("click", () => selectOption(groupName, button));
+		});
+		const requestedMode = new URLSearchParams(location.search).get("mode");
+		const modeDefaults = { solo: 0, local: 1 };
+		const defaultIndex = groupName === "category" ? 0 : modeDefaults[requestedMode] ?? 1;
+		const savedIndex = Number(saved[groupName] ?? defaultIndex);
+		const selectedIndex = groupName === "mode" && modeDefaults[requestedMode] !== undefined ? modeDefaults[requestedMode] : savedIndex;
+		selectOption(groupName, buttons[selectedIndex] || buttons[defaultIndex]);
+	});
+
+	function selectOption(groupName, selectedButton) {
+		if (!selectedButton) return;
+		config.querySelectorAll(`[data-option-group="${groupName}"]`).forEach((button) => {
+			const selected = button === selectedButton;
+			button.classList.toggle("is-selected", selected);
+			button.setAttribute("aria-checked", String(selected));
+			button.tabIndex = selected ? 0 : -1;
+		});
+	}
+
+	const scoreChoices = [...document.querySelectorAll('[data-target-score]')];
+	const initialTarget = [20, 30, 50].includes(Number(saved.targetScore)) ? Number(saved.targetScore) : 30;
+	function selectTarget(selected) { scoreChoices.forEach(button => button.setAttribute('aria-pressed', String(button === selected))); }
+	scoreChoices.forEach(button => { button.addEventListener('click', () => selectTarget(button)); if (Number(button.dataset.targetScore) === initialTarget) selectTarget(button); });
+	const topic = document.getElementById("topic");
+
+	const topicCategory = document.getElementById("topic-category");
+	const topicSuggestion = document.getElementById("topic-suggestion");
+	const topicGroups = window.MadaarTopics.groups;
+	const newLearner = document.getElementById("new-learner");
+	topic.value = new URLSearchParams(location.search).get("topic") || saved.topic || "";
+	if (localStorage.getItem('madaarLanguage') === 'en') topic.value = window.MadaarI18n.translate(topic.value);
+	topic.placeholder = "اكتب موضوعًا، مثل: الصيام، بر الوالدين، غزوة بدر";
+	const requestedCategory=new URLSearchParams(location.search).get('category')||saved.topicCategory;
+	topicCategory.value = Object.hasOwn(topicGroups, requestedCategory) ? requestedCategory : "worship";
+	newLearner.checked = Boolean(saved.newLearner);
+	const onlineSelected=()=>false;
+	let catalogueReady=Promise.resolve();
+    document.addEventListener('DOMContentLoaded',()=>{if(!onlineSelected()&&window.MadaarAI.getConfig().mode==='remote')catalogueReady=window.MadaarAI.getSupportedTopics().then(result=>window.MadaarTopics.add(result.topics)).catch(()=>{});});
+    document.getElementById("random-topic").addEventListener("click", async event => {
+		topic.setCustomValidity(window.MadaarI18n.message(''));
+		let topics=topicGroups[topicCategory.value] || Object.values(topicGroups).flat();
+        if(onlineSelected())topics=topics.filter(value=>Object.hasOwn(window.MadaarQuestionBank.lessons,value));
+        if(!onlineSelected()&&window.MadaarAI.getConfig().mode==='remote'){
+            const button=event.currentTarget;button.disabled=true;
+            try{topics=(await window.MadaarAI.suggestTopics({topicCategory:topicCategory.value})).suggestions;}catch(error){topicSuggestion.textContent=error.message;return;}finally{button.disabled=false;}
+            if(!topics.length){topicSuggestion.textContent=window.MadaarI18n.message('لا تحتوي الحزمة على موضوع متاح في هذا القسم حاليًا.');return;}
+        }
+        if(!topics.length){topicSuggestion.textContent=window.MadaarI18n.message('لا يوجد موضوع متاح للأونلاين في هذا القسم حاليًا.');return;}
+		const suggestion = topics[Math.floor(Math.random() * topics.length)];
+		topic.value = localStorage.getItem('madaarLanguage') === 'en' ? window.MadaarI18n.translate(suggestion) : suggestion;
+		topicSuggestion.dataset.topicValue = suggestion;
+		topicSuggestion.textContent = document.documentElement.lang === "en" ? `Random suggestion: ${suggestion}` : `اقتراح عشوائي: ${suggestion}`;
+	});
+
+	document.querySelector("main > div:first-child p").textContent = "خصّص رحلتك قبل أن تبدأ.";
+	document.querySelector("main > div:nth-child(2) > section:last-child>div:first-child>div").textContent = "اختر مجالًا أو اكتب أي موضوع يخطر ببالك، وسأجهز لك الأسئلة!";
+	const modeHeading = [...config.querySelectorAll("h2")].find((heading) => heading.textContent.trim() === "نمط اللعب");
+	["لاعب، وحدك بأسلوبك", "رقعة لوحية للأسرة أو الفصل", "غرفة برمز مع أصدقائك"].forEach((description, index) => {
+		const button = modeHeading.nextElementSibling.querySelectorAll(":scope > button")[index];
+		const text = button?.querySelectorAll(":scope > span")[1]?.querySelectorAll("span")[1];
+		if (text) text.textContent = description;
+	});
+
+	document.querySelector("main > div:nth-child(2) > section:last-child a[href='Players.html']").addEventListener("click", async (event) => {
+        event.preventDefault();const startLink=event.currentTarget;
+        const enteredTopic = topic.value.trim();
+        if (!enteredTopic) {
+            event.preventDefault();
+            topic.setCustomValidity(window.MadaarI18n.message('اكتب موضوعًا أو اختر موضوعًا عشوائيًا.'));
+            topic.reportValidity();
+            topic.addEventListener('input', () => topic.setCustomValidity(window.MadaarI18n.message('')), {once:true});
+            return;
+        }
+        if(!onlineSelected())await catalogueReady;
+        let match=window.MadaarTopics.find(enteredTopic),validation;
+        try{validation=onlineSelected()?{available:!!match&&Object.hasOwn(window.MadaarQuestionBank.lessons,match.topic),topic:match?.topic,category:match?.category,suggestions:Object.keys(window.MadaarQuestionBank.lessons)}:await window.MadaarAI.validateTopic({topic:match?.topic||enteredTopic,topicCategory:topicCategory.value,language:localStorage.getItem('madaarLanguage')||'ar'});}
+        catch(error){let notice=document.getElementById('setup-service-error');if(!notice){notice=document.createElement('p');notice.id='setup-service-error';notice.setAttribute('role','alert');startLink.before(notice);}notice.textContent=error.message;return;}
+        document.getElementById('setup-service-error')?.remove();
+        match=validation.available?{topic:validation.topic,category:validation.category}:null;
+        if (!match) {
+            event.preventDefault();
+            localStorage.setItem('madaarRejectedTopic', JSON.stringify({topic:enteredTopic,category:topicCategory.value}));
+            localStorage.setItem('madaarTopicSuggestions', JSON.stringify(validation.suggestions||[]));
+            location.href = 'TopicUnavailable.html';
+            return;
+        }
+        localStorage.removeItem('madaarRejectedTopic');
+        localStorage.removeItem('madaarWithdrawal');
+        if (window.MadaarAI.getConfig().mode === 'mock') {
+            try { const settings=JSON.parse(localStorage.getItem('madaarTestService') || '{}'); settings.scenario='normal'; localStorage.setItem('madaarTestService',JSON.stringify(settings)); } catch { localStorage.removeItem('madaarTestService'); }
+        }
+		const values = {};
+		config.querySelectorAll("[data-option-group][aria-checked='true']").forEach((button) => {
+			values[button.dataset.optionGroup] = Number(button.dataset.optionValue);
+		});
+		const destinations = ["Board.html", "Players.html"];
+		values.topic = match.topic;
+		values.targetScore = Number(document.querySelector("[data-target-score][aria-pressed='true']").dataset.targetScore);
+		localStorage.setItem("madaarTargetScore", String(values.targetScore));
+		values.topicCategory = match.category;
+		values.newLearner = newLearner.checked;
+		for (const key of ["madaarPlayers", "madaarPlayerColors", "madaarPlayerScores", "madaarGameState", "madaarPendingTurn", "madaarAnswer"]) localStorage.removeItem(key);
+		try {
+			localStorage.setItem(storageKey, JSON.stringify(values));
+		} catch {}
+        if(window.MadaarSession.get()?.mode==='account')window.MadaarSession.saveProfile({...values,language:localStorage.getItem('madaarLanguage')||'ar'});
+		startLink.href = destinations[values.mode] || "Players.html";
+        location.assign(startLink.href);
+	});
+})();
+</script>
+<script src="service-config.js"></script>
+<script src="question-bank.js"></script>
+<script src="ai-service.js"></script>
+<script src="ai-ui.js"></script>
+<script src="session-service.js"></script>
+<script src="app-ui.js"></script>
+<script src="navigation.js"></script></body>
+</html>

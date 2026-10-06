@@ -1,0 +1,119 @@
+[
+  {
+    "id": "dorar_fiqh",
+    "category": "worship_transactions",
+    "title_ar": "الموسوعة الفقهية — الدرر السنية",
+    "title_en": "Dorar Fiqh Encyclopedia",
+    "url": "https://dorar.net/feqhia",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "dorar_hadith",
+    "category": "hadith",
+    "title_ar": "الموسوعة الحديثية — الدرر السنية",
+    "title_en": "Dorar Hadith Encyclopedia",
+    "url": "https://dorar.net/hadith",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "facilitated_fiqh",
+    "category": "worship",
+    "title_ar": "الفقه الميسر في ضوء الكتاب والسنة",
+    "title_en": "The Facilitated Fiqh",
+    "url": "https://islamcontent.com/storage/contents/107576/ar_The_Facilitated_Fiqh.pdf",
+    "type": "pdf",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "haramain",
+    "category": "guidance",
+    "title_ar": "رسالة الحرمين",
+    "title_en": "Risalat Al-Haramain",
+    "url": "https://risala.prh.gov.sa",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "binbaz",
+    "category": "transactions_support",
+    "title_ar": "موقع الشيخ عبد العزيز بن باز",
+    "title_en": "Shaykh Ibn Baz Website",
+    "url": "https://binbaz.org.sa/",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "dorar_aqeeda",
+    "category": "aqeedah",
+    "title_ar": "الموسوعة العقدية — الدرر السنية",
+    "title_en": "Dorar Aqeedah Encyclopedia",
+    "url": "https://dorar.net/aqeeda",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "dorar_tafseer",
+    "category": "tafseer",
+    "title_ar": "موسوعة التفسير — الدرر السنية",
+    "title_en": "Dorar Tafsir Encyclopedia",
+    "url": "https://dorar.net/tafseer",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "islamic_content",
+    "category": "terminology",
+    "title_ar": "الجمهرة — موسوعة مفردات المحتوى الإسلامي",
+    "title_en": "Islamic Content Terminology Encyclopedia",
+    "url": "https://islamic-content.com/",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "seerah_repo",
+    "category": "seerah",
+    "title_ar": "المستودع الدعوي الرقمي",
+    "title_en": "Digital Dawah Repository",
+    "url": "https://dawa.center/",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "quranpedia",
+    "category": "quran",
+    "title_ar": "الموسوعة القرآنية — Quranpedia",
+    "title_en": "Quranpedia",
+    "url": "https://quranpedia.net/",
+    "type": "web",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "riyad",
+    "category": "ethics",
+    "title_ar": "رياض الصالحين — الإمام النووي",
+    "title_en": "Riyad as-Salihin",
+    "url": "https://d1.islamhouse.com/data/ar/ih_books/single_01/ar_Riyad_usSaliheen.pdf",
+    "type": "pdf",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "new_muslim",
+    "category": "new_muslims",
+    "title_ar": "المختصر المفيد للمسلم الجديد",
+    "title_en": "New Muslim Guideline",
+    "url": "https://dawa.center/book/5626/download/24809",
+    "type": "pdf",
+    "status": "approved_catalog"
+  },
+  {
+    "id": "islamenc",
+    "category": "multilingual",
+    "title_ar": "موسوعة المحتوى الإسلامي باللغات",
+    "title_en": "Islamic Content Encyclopedia in Languages",
+    "url": "https://islamenc.com/ar",
+    "type": "web",
+    "status": "approved_catalog"
+  }
+]
