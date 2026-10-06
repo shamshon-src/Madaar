@@ -683,13 +683,13 @@ body[data-screen="home"] > div > header nav svg path {
   stroke: var(--ink) !important;
 }
 
-body[data-screen="home"] > div > main > div:last-child {
+body[data-screen="home"] > div > main > .home-mode-cards {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px !important;
 }
 
-body[data-screen="home"] > div > main > div:last-child > div {
+body[data-screen="home"] > div > main > .home-mode-cards > div {
   min-width: 0;
   background: #fff !important;
   border: 1px solid var(--line);
@@ -698,11 +698,11 @@ body[data-screen="home"] > div > main > div:last-child > div {
   cursor: pointer;
 }
 
-body[data-screen="home"] > div > main > div:last-child > div p {
+body[data-screen="home"] > div > main > .home-mode-cards > div p {
   color: var(--muted) !important;
 }
 
-body[data-screen="home"] > div > main > div:last-child > div:focus-visible {
+body[data-screen="home"] > div > main > .home-mode-cards > div:focus-visible {
   outline: 3px solid #83b5e7;
   outline-offset: 2px;
 }
@@ -712,7 +712,7 @@ body[data-screen="home"] > div > main > div:last-child > div:focus-visible {
     font-size: 38px !important;
   }
 
-  body[data-screen="home"] > div > main > div:last-child {
+  body[data-screen="home"] > div > main > .home-mode-cards {
     grid-template-columns: 1fr;
   }
 }

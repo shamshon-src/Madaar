@@ -203,8 +203,8 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 		if (column === 1) return rtl?"right":"left";
 		return rtl?"left":"right";
 	}
-	function showCell(index, revealed = true) {
-		revealed = true;
+	function showCell(index) {
+		const revealed = landingPositions.includes(index);
 		const cell = cells[index];
 		if (!cell) return;
 		const tile = game.getTile(index,state.displayPlayer??state.currentPlayer);
@@ -362,7 +362,7 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 	} else {
 		renderSidebar();
 	}
-	state.tiles.forEach((_, index) => showCell(index, landingPositions.includes(index)));
+	state.tiles.forEach((_, index) => showCell(index));
 	if (!new URLSearchParams(location.search).has("overlay") && state.lastLanding) {
 		let pendingTilePulse = null;
 		try {

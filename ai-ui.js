@@ -5,6 +5,16 @@
   const navigate=target=>window.MadaarPlay?window.MadaarPlay.open(target):location.assign(target);
   const store = (key, value) => localStorage.setItem(key, JSON.stringify(value));
   const make = (tag, text, className) => { const element = document.createElement(tag); if (text) element.textContent = text; if (className) element.className = className; return element; };
+  function reviewExplanation(text) {
+    const seen = new Set();
+    return String(text || '').split(/\r?\n/).filter(line => {
+      const key = line.trim().replace(/\s+/g, ' ');
+      if (!key) return true;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).join('\n');
+  }
   function appendEvidence(parent, evidence, fallback) {
     if(evidence?.text)parent.append(make('blockquote',evidence.text,'answer-evidence'));
     const source=evidence?.source||fallback;
@@ -13,7 +23,7 @@
       const link=make('a','فتح المصدر');link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';parent.append(link);
     }
   }
-  function status(parent) { const element = make('p', api.getConfig().mode === 'mock' ? 'أسئلة جاهزة للتجربة' : api.getConfig().provider==='supplied-curated-package'?'محتوى الحزمة المرفقة':'خدمة AI'); element.className = 'ai-service-status'; parent.append(element); return element; }
+  function status(parent) { const element = make('p', api.getConfig().provider === 'english-practice' ? 'English practice simulation · prepared questions, not live AI' : api.getConfig().mode === 'mock' ? 'أسئلة جاهزة للتجربة' : api.getConfig().provider==='supplied-curated-package'?'محتوى الحزمة المرفقة':'خدمة AI'); element.className = 'ai-service-status'; parent.append(element); return element; }
   function errorBox(parent, error, retry) { const box = make('div', '', 'ai-service-error'); box.setAttribute('role','alert'); box.append(make('p',error.message)); const button=make('button','إعادة المحاولة'); button.type='button'; button.onclick=()=>{box.remove();retry();}; box.append(button); parent.append(box); }
   function saveResult(question, result, options = {}) {
     const game = window.MadaarGame;
@@ -126,7 +136,7 @@
     const simplify=Object.assign(make('a','بسّط لي','simplify-button'),{href:'Simplify.html'});simplify.title='اشرح لي الإجابة';
     const miniFalak=make('img');miniFalak.src='images/falak-bot.svg';miniFalak.alt='';simplify.prepend(miniFalak);
     const explanation=make('section','','feedback-explanation answer-simplification');
-    explanation.append(make('h2','مراجعة الإجابة'),make('p',answer.explanation||''));
+    explanation.append(make('h2','مراجعة الإجابة'),make('p',reviewExplanation(answer.explanation)));
     if(!answer.fullCorrect && answer.correctAnswer){explanation.append(make('h2',question.type==='analyze'?'عناصر الإجابة المكتملة':'الإجابة الصحيحة'),make('p',answer.correctAnswer,'correct-answer-text'));}
     explanation.append(make('h2','الدليل'));
     appendEvidence(explanation,answer.evidence||question.evidence,answer.source||question.source);
@@ -168,9 +178,4 @@
   }
   document.addEventListener('DOMContentLoaded',()=>{if(document.body.dataset.screen==='feedback')mountFeedback();if(document.body.dataset.screen==='simplify')mountSimplify();});
   document.addEventListener('DOMContentLoaded',()=>{if(document.body.dataset.screen==='expert')mountExpert();});
-  document.addEventListener('DOMContentLoaded',()=>{
-    if(document.body.dataset.screen==='guide'){
-      const main=document.querySelector('main');if(main){const link=make('a','الخطة البديلة');link.href='AlternativePlan.html';link.className='developer-plan-link';main.append(link);}
-    }
-  });
 })();

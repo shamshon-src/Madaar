@@ -56,6 +56,7 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 		["رحلة فردية", "محطات تتدرج معك خطوة بخطوة", "solo"],
 		["اللعب مع من حولك", "رقعة واحدة للأسرة أو الفصل", "local"]
 	];
+	document.querySelector("main > div:last-child").classList.add("home-mode-cards");
 	[...document.querySelectorAll("main > div:last-child > div")].forEach((card, index) => {
 		if(!modes[index]){card.remove();return;}
 		const [title, description, mode] = modes[index];

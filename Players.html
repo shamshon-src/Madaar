@@ -45,6 +45,13 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 	if (summaryValues[2]) summaryValues[2].textContent = `الفئة: ${category}`;
 
 	const playerRows = () => [...form.querySelectorAll("input[type='text']")].map((input) => input.parentElement.parentElement);
+	const solo = Number(setup.mode) === 0;
+	if (solo) {
+		playerRows().slice(1).forEach(row => row.remove());
+		document.querySelector('main > div:first-child h1').textContent = 'إعداد اللاعب';
+		document.querySelector('main > div:first-child p').textContent = 'اكتب اسمك واختر لون بيدقك قبل بدء الرحلة الفردية.';
+		document.querySelector('main > div:nth-child(2) > section:last-child > div:first-child > div').textContent = 'اختر اسمك ولونك، ولنبدأ رحلتك!';
+	}
 	playerRows().slice(0, 4).forEach((row, index) => {
 		const input = row.querySelector("input");
 		input.value = savedNames[index] || "";
@@ -93,6 +100,7 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 	playerRows().slice(0, 4).forEach((row, index) => renderPalette(row, index));
 
 	addPlayer.addEventListener("click", () => {
+		if (solo) return;
 		const rows = playerRows();
 		if (rows.length >= 4) return;
 		const nextNumber = rows.length + 1;
@@ -110,9 +118,10 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 		renderPalette(row, nextNumber - 1, "");
 		addPlayer.hidden = nextNumber === 4;
 	});
-	addPlayer.hidden = playerRows().length >= 4;
+	addPlayer.hidden = solo || playerRows().length >= 4;
+	if (solo) addPlayer.style.display = 'none';
 	const limitNotice = form.querySelector("p");
-	if (limitNotice) limitNotice.textContent = "حتى ٤ لاعبين على الجهاز نفسه. اختر لونًا مختلفًا لكل بيدق.";
+	if (limitNotice) limitNotice.textContent = solo ? 'سيظهر اسمك ولون بيدقك على الرقعة.' : "حتى ٤ لاعبين على الجهاز نفسه. اختر لونًا مختلفًا لكل بيدق.";
 	const formError = document.createElement("p");
 	formError.className = "player-form-error";
 	formError.hidden = true;
@@ -127,6 +136,7 @@ a{color:#0A3F70}a:hover{color:#0B2545}
 			formError.hidden = false;
 			return;
 		}
+		for (const key of ['madaarGameState', 'madaarPendingTurn', 'madaarAnswer', 'madaarPlayerScores', 'madaarActiveQuestion', 'madaarLastResult', 'madaarTurnReview', 'madaarTurnView', 'madaarPendingTilePulse', 'madaarWithdrawal']) localStorage.removeItem(key);
 		localStorage.setItem(namesKey, JSON.stringify(playerRows().slice(0, 4).map((row, index) => row.querySelector("input").value.trim() || `لاعب ${index + 1}`)));
 		localStorage.setItem("madaarPlayerColors", JSON.stringify(colors));
 		localStorage.setItem("madaarTargetScore", String([20, 30, 50].includes(Number(setup.targetScore)) ? Number(setup.targetScore) : 30));

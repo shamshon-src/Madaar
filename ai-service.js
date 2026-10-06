@@ -10,6 +10,10 @@
       try { localStorage.setItem('madaarProviderOverride', JSON.stringify(override)); } catch {}
     }
     const selected = override && ['mock','remote'].includes(override.mode) ? { ...base, ...override } : base;
+    if (selected?.englishPractice === true && localStorage.getItem('madaarLanguage') === 'en' &&
+        selected.mode === 'remote' && selected.provider === 'supplied-curated-package' && selected.apiBaseUrl === base.apiBaseUrl) {
+      return { ...selected, mode: 'mock', provider: 'english-practice', scenario: 'normal' };
+    }
     return { ...selected, ...(selected?.mode === 'mock' ? read('madaarTestService', {}) : {}), mode: selected?.mode };
   };
   const maxGrade = { know: 1, explore: 2, analyze: 3 };
@@ -65,8 +69,8 @@
         grade = hits === 2 ? 3 : hits === 1 ? 2 : /فهم|معن|تعلم|understand|meaning|learn/i.test(text) ? 1 : 0;
         if (['grade0','grade1','grade2','grade3'].includes(settings.scenario)) grade = Number(settings.scenario.slice(-1));
         if (injection || !text || /^(لا اعلم|لا ادري|مدري|i (?:do not|don't) know|i am not sure)$/i.test(text)) grade = 0;
-        if (injection) explanation = 'تم رصد مدخل غير صالح للعبة.';
-        else if (!grade) explanation = 'لم يتم تقديم تحليل للمسألة؛ طالع الشرح والإسناد المرفق لترسيخ المعلومة واصل تقدمك';
+        if (injection) explanation = request.language === 'en' ? 'Invalid game input detected.' : 'تم رصد مدخل غير صالح للعبة.';
+        else if (!grade) explanation = request.language === 'en' ? 'No analysis was provided. Review the explanation and supporting material, then keep learning.' : 'لم يتم تقديم تحليل للمسألة؛ طالع الشرح والإسناد المرفق لترسيخ المعلومة واصل تقدمك';
       }
       if(request.timedOut)grade=0;
       return { questionId: question.id, type: question.type, grade, steps: grade, correct: grade === maxGrade[question.type], explanation, source: question.source,

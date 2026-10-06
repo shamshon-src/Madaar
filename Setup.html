@@ -104,9 +104,13 @@ main>div:nth-child(2)>section:last-child>div:nth-child(2){background:var(--green
 			button.dataset.optionGroup = groupName;
 			button.dataset.optionValue = String(index);
 			button.classList.add("radio-option");
+			// CSS draws the checked dot; discard the prototype's permanent dot.
+			button.lastElementChild.replaceChildren();
 			button.setAttribute("role", "radio");
 			button.addEventListener("click", () => selectOption(groupName, button));
 		});
+		heading.nextElementSibling.setAttribute("role", "radiogroup");
+		heading.nextElementSibling.setAttribute("aria-label", title);
 		const requestedMode = new URLSearchParams(location.search).get("mode");
 		const modeDefaults = { solo: 0, local: 1 };
 		const defaultIndex = groupName === "category" ? 0 : modeDefaults[requestedMode] ?? 1;
@@ -132,6 +136,11 @@ main>div:nth-child(2)>section:last-child>div:nth-child(2){background:var(--green
 	const topic = document.getElementById("topic");
 
 	const topicCategory = document.getElementById("topic-category");
+	document.addEventListener('DOMContentLoaded', () => {
+		if (window.MadaarAI.getConfig().provider === 'english-practice') {
+			document.querySelector('.topic-help').textContent = 'English practice simulation: prepared questions with practice grading. This mode does not use live AI or approved translations of the supplied corpus.';
+		}
+	});
 	const topicSuggestion = document.getElementById("topic-suggestion");
 	const topicGroups = window.MadaarTopics.groups;
 	const newLearner = document.getElementById("new-learner");
@@ -201,7 +210,7 @@ main>div:nth-child(2)>section:last-child>div:nth-child(2){background:var(--green
 		config.querySelectorAll("[data-option-group][aria-checked='true']").forEach((button) => {
 			values[button.dataset.optionGroup] = Number(button.dataset.optionValue);
 		});
-		const destinations = ["Board.html", "Players.html"];
+		const destinations = ["Players.html", "Players.html"];
 		values.topic = match.topic;
 		values.targetScore = Number(document.querySelector("[data-target-score][aria-pressed='true']").dataset.targetScore);
 		localStorage.setItem("madaarTargetScore", String(values.targetScore));

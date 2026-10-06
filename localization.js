@@ -1,5 +1,38 @@
 (() => {
   const dictionary={
+    'إعداد اللاعب':'Player setup',
+    'اكتب اسمك واختر لون بيدقك قبل بدء الرحلة الفردية.':'Enter your name and choose your pawn color before starting your solo journey.',
+    'اختر اسمك ولونك، ولنبدأ رحلتك!':'Choose your name and color, and let’s start your journey!',
+    'سيظهر اسمك ولون بيدقك على الرقعة.':'Your name and pawn color will appear on the board.',
+    'مَدَار':'Madaar','مدار':'Madaar','كيف ألعب':'How to Play','رجوع':'Back',
+    'مدار — تسجيل الدخول':'Madaar — Sign In','تسجيل الدخول':'Sign In','تسجيل الخروج':'Sign Out',
+    'احفظ اسمك':'Save your name','ملفي المحلي':'My local profile',
+    'أهلًا بك في مَدَار':'Welcome to Madaar','خطوة بسيطة وتبدأ رحلتك.':'One simple step to begin your journey.',
+    'ملف اللاعب':'Player profile','احفظ اسمك على هذا الجهاز، أو ابدأ اللعب مباشرة.':'Save your name on this device, or start playing right away.',
+    'اسم اللاعب':'Player name','أدخل اسمك':'Enter your name','أدخل اسمك أولًا.':'Enter your name first.',
+    'حفظ الاسم والبدء':'Save name and start','أو':'Or','اللعب السريع':'Quick play',
+    'ابدأ رحلتك دون تسجيل الدخول.':'Begin your journey without signing in.',
+    'ملفك محفوظ في هذا المتصفح فقط، دون بريد أو كلمة مرور.':'Your profile is saved only in this browser, without an email or password.',
+    'أنا فَلَك، رفيقك في الرحلة!':'I’m Falak, your journey companion!',
+    'هل أنت مستعد لنتعلم ونلعب معًا؟':'Ready to learn and play together?',
+    'كل سؤال بداية لمعرفة جديدة.':'Every question opens the door to new knowledge.',
+    'التنقل':'Navigation','شعار مدار':'Madaar logo','فَلَك، رفيقك في مدار':'Falak, your Madaar companion',
+    'فلك يشجعك':'Falak cheering you on','فلك يفكر':'Falak thinking',
+    'رحلة بمحطات تتدرج معك':'A journey through progressive stages',
+    'رقعة لوحية للفصل أو العائلة':'One board for class or family','اللعب الجماعي على جهاز واحد':'Local multiplayer on one device',
+    'العودة إلى الرئيسية':'Back to Home','اكتب بأسلوبك، فلك يفهم المعنى.':'Write in your own words; Falak understands the meaning.',
+    'فكّر في السبب، مو بس في التصرف.':'Think about the reason as well as the action.',
+    'سجل الجولة':'Round log','استراحة':'Rest','الشهادتان':'The testimony of faith','الصوم':'Fasting',
+    'الرحمة':'Mercy','الحديبية':'Hudaybiyyah','العدل':'Justice','الشورى':'Consultation','التوبة':'Repentance',
+    'سورة البقرة، الآية ١٨٣':'Surah Al-Baqarah, verse 183',
+    'نقاط سؤالك التالي تنحسب ضعف. ركّز زين!':'Your next question earns double points. Stay focused!',
+    'أجاب على «اعرف» وتقدّم خطوة.':'Answered Know and moved one step.',
+    'أجاب على «استكشف» وتقدّم خطوتين.':'Answered Explore and moved two steps.',
+    'وقف على «مكافأة» وأخذ نقاطًا إضافية.':'Landed on a reward tile and earned bonus points.',
+    'خصص رحلتك قبل أن تبدأ.':'Customize your journey before you begin.',
+    'الخادم المحلي غير متاح. شغّل Start-Madaar-AI.ps1 ثم أعد المحاولة.':'The local AI server is unavailable. Run Start-Madaar-AI.ps1, then retry.',
+    'انتهت مهلة خدمة AI؛ أعد المحاولة.':'The AI service timed out. Please retry.',
+    'تعذّر تنفيذ طلب خدمة AI. لم تتغير النقاط؛ أعد المحاولة.':'The AI request failed. Your points are unchanged; please retry.',
     'محتوى الحزمة المرفقة':'Supplied package content','الحزمة المرفقة (خادم محلي)':'Supplied package (local server)',
     'لا تحتوي الحزمة على موضوع متاح في هذا القسم حاليًا.':'The package currently has no available topics in this category.',
     'الحزمة المرفقة متصلة بخادم محلي؛ لا تُستخدم المحاكاة تلقائيًا عند فشله.':'The supplied package uses a local server; it does not silently fall back to mock mode on failure.',
@@ -130,6 +163,9 @@
     m=value.match(/^(.+) · تجربة$/);if(m)return `${translate(m[1])} · Practice`;
     m=value.match(/^الفائزون: (.+)$/);if(m)return `Winners: ${translate(m[1])}`;
     m=value.match(/^مستواك في (.+)$/);if(m)return `Your level in ${translate(m[1])}`;
+    m=value.match(/^محطة (\d+)$/);if(m)return `Stop ${m[1]}`;
+    m=value.match(/^دورك يا (.+): اسحب بطاقة من أي مستوى$/);if(m)return `Your turn, ${translate(m[1])}: draw a card from any level`;
+    m=value.match(/^الموضوع: (.+) • (فردي|جماعي|تنافسي)$/);if(m)return `Topic: ${translate(m[1])} • ${{فردي:'Solo',جماعي:'Group',تنافسي:'Competitive'}[m[2]]}`;
     m=value.match(/^(\d+) نقطة$/);if(m)return `${m[1]} points`;
     let result=value;
     result=result.replace(/إجابة صحيحة: \+(\d+) نقطة\./g,'Correct answer: +$1 points.')
@@ -154,6 +190,9 @@
     for(const element of elements)for(const attribute of ['placeholder','aria-label','alt','title']){const value=element.getAttribute(attribute);if(value&&hasArabic(value)){const translated=translate(value);if(translated!==value)element.setAttribute(attribute,translated);}}
   }
   window.MadaarI18n={translate,render,dictionary,message:value=>localStorage.getItem('madaarLanguage')==='en'?translate(value):value};
+  window.addEventListener('storage',event=>{
+    if(event.key==='madaarLanguage'&&['ar','en'].includes(event.newValue)&&event.newValue!==language)location.reload();
+  });
   document.addEventListener('DOMContentLoaded',()=>{
     const bank=window.MadaarQuestionBank;
     if(bank)for(const topic of Object.keys(bank.lessons))for(const type of ['know','explore','analyze'])for(const count of [1,2,3]){
